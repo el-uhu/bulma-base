@@ -1,0 +1,26 @@
+<!--
+Uses a citeky (ID) to access bibliographic information stored in a datafile in the directory "data/references"
+The corresponding datafile needs to be specified in the frontmatter of the markdownfile as "references",
+e.g.
++++
+title ="foo"
+description = "bar"
+date = "2016-05-03"
+references = "baz" # for file /data/references/baz.toml
++++
+-->
+{{ if (ne $.Site.Data.references "") }}
+  {{ $refdata := (index $.Site.Data.references $.Page.Params.references)}}
+  {{ $refID := .Get 0 }}
+  {{ $reference := index $refdata $refID }}
+  {{ $.Page.Scratch.SetInMap "references" $refID $reference }}
+  {{ with $reference }}
+    {{ $lastname := index (split .author ", ") 0 }}
+    {{ if eq .type "article" }}
+      <a href='#{{ $lastname }}{{ .year }}'>{{ $lastname }} {{ .year }} {{ .journal }}</a>
+    {{ end }}
+    {{ if eq .type "website" }}
+      <a href="#{{ $lastname }}{{ .year }}">{{ $lastname }} {{ .year }} {{ .website }}</a>
+    {{ end }}
+  {{ end }}
+{{ end }}
