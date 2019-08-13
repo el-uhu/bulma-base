@@ -2,27 +2,26 @@
 <h1>{{ .Name }}</h1>
 {{ end }}
 
+{{ define "aside" }}
+  {{ partial "aside.html" . }}
+{{ end }}
+
 {{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+
 <div class="content">
   <h5 class="subtitle has-text-grey is-7 has-text-weight-light">{{ .Date.Format "02.01.2006" }}</h5>
   <h1 class="title">{{ .Title }}</h1>
   {{ with .Params.description }}
     <h4 class="subtitle has-text-grey"> {{ . }}</h4>
   {{ end }}
-  {{ range .Params.authors }}
+
+  <div class="columns">
+    {{ range .Params.authors }}
     {{ $authordata := (index $.Site.Data.authors .)}}
-    <div class="media has-background-light">
-      <div class="media-left center">
-        <p class="image is-64x64">
-          <img class="is-rounded" src="{{ $authordata.featured }}">
-        </p>
-      </div>
-      <div class="media-content">
-        <span class="has-text-weight-medium is-uppercase is-size-6"> {{ $authordata.name }}</span><br>
-        <span class="has-text-grey is-size-7"> {{ $authordata.position }}, {{ $authordata.role }}</span>
-      </div>
-    </div>
-  {{ end }}
+    {{ partial "author-info" $authordata}}
+    {{ end }}
+  </div>
 
 
   {{ with .Params.featured }}

@@ -2,37 +2,31 @@
 {{ define "body_classes" }}page-default-list{{ end }}
 {{ define "header_classes" }}{{ end }}
 
-{{ define "main" }}
+{{ define "aside" }}
+  {{ partial "aside.html" . }}
+{{ end }}
 
-<span class="overview">{{ .Kind }}</span>
-<h1 class="title">{{ .Title }}</h1>
-<h2 class="subtitle has-text-grey"> {{ .Kind }}</h2>
+{{ define "main" }}
+<h1 class="title is-1">{{ .Title }}</h1>
+{{ partial "breadcrumb.html" . }}
 <div class="content">
   {{ .Content }}
 </div>
 
 {{ range.Pages }}
-<section class="media">
-  <a style="display:block;" href="{{ .URL }}">
-    <div class="media-left">
-      <p class="image is-128x128 center">
-        <img class="" src="{{ .Params.featured }}"></img>
-      </p>
-    </div>
-    <div class="media-content">
-      <h1 class="is-size-4 has-text-weight-bold"><a href=""></a>{{ .Title }}</h1>
-      <h4 class="has-text-grey">{{ .Summary }}</h4>
-    </div>
-  </a>
-</section>
-{{ end }}
-
-{{ range.Sections }}
-<section class="section">
-  <div class="content">
-    <h1><a href=""></a>{{ .Title }}</h1>
-  </div>
-</section>
+<div class="">
+    <a href="{{ .Permalink }}" style="display:block">
+      <div class="section">
+        <h4 class="subtitle has-text-primary is-size-6 has-text-right">{{ .Date.Format "02.01.2006" }}</h4>
+        <h1 class="title is-size-4 has-text-weight-bold"><a href=""></a>{{ .Title }}</h1>
+        <h2 class="subtitle has-text-grey">{{ .Params.description }}</h2>
+        <figure class="image">
+          <img src="{{ .Params.featured }}" alt="">
+        </figure>
+        <p>{{ .Summary }}</p>
+      </div>
+    </a>
+</div>
 {{ end }}
 
 {{ end }}

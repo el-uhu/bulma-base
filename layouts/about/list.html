@@ -7,11 +7,14 @@
 {{ end }}
 
 {{ define "main" }}
+<h1 class="title is-2">{{ .Title }}</h1>
 {{ partial "breadcrumb.html" . }}
-<h1 class="title is-1">{{ .Title }}</h1>
 <div class="content">
   {{ .Content }}
 </div>
+
+{{ partial "timeline.html" . }}
+
 
 <section class="section">
   <div class="columns is-multiline">

@@ -1,0 +1,22 @@
+<div class="content">
+    <h1 class="header"> Timeline </h1>
+  </div>
+
+  <div class="timeline is-centered">
+    {{ $timelinedata := .Site.Data.timeline }}
+    {{ range $timelinedata }}
+      <header class="timeline-header">
+        <span class="tag is-medium is-primary"> {{ .name }}</span>
+      </header>
+      {{ range .events }}
+        <div class="timeline-item is-primary">
+          <div class="timeline-marker is-primary"></div>
+          <div class="timeline-content">
+            <p class="heading">{{ .month }}</p>
+            <p>{{ .title }}</p>
+            <p class="heading has-text-grey">{{ .location }}</p>
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
