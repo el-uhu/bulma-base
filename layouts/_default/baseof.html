@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
     {{- partial "head.html" . -}}
-    <body>
+    <body class="">
         {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
+        <section class="section">          
+          <div id="content" class="columns is-centered">
+            <div class="column is-two-thirds">
+              {{- block "main" . }}{{- end }}
+            </div>
+          </div>
+        </section>
         {{- partial "footer.html" . -}}
     </body>
 </html>
