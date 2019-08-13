@@ -2,7 +2,7 @@
 <html>
     {{- partial "head.html" . -}}
     <body class="">
-        {{- partial "header.html" . -}}
+        {{- block "header" . -}}{{ end }}
         <section class="section">
           <div id="content" class="columns is-centered">
             <div class="column is-desktop is-2">
@@ -14,5 +14,6 @@
           </div>
         </section>
         {{- partial "footer.html" . -}}
+        {{- block "custom-js" . -}}{{ end }}
     </body>
 </html>

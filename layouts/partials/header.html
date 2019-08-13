@@ -1,6 +1,7 @@
 <nav class="navbar">
-  <div class="navbar-brand">
-    <!-- navbar items, navbar burger... -->
+  <div class="container">    
+    <div class="navbar-brand">
+      <!-- navbar items, navbar burger... -->
       <a class="navbar-item" href="{{ .Site.BaseURL }}">
         <img src="{{ .Site.Params.logo.standard | relURL }}">
       </a>
@@ -10,22 +11,23 @@
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
-  </div>
-  <div class="navbar-menu" id="navMenu">
-    <!-- navbar start, navbar end -->
-    <div class="navbar-start"></div>
-    <div class="navbar-end">
-      {{ $currentPage := . }}
-      {{ range .Site.Menus.main }}
-      <a href="{{ .URL | relURL }}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }} is-active {{ end }}">
-        <i class="{{ .Pre }} fa-xs" style="padding-right:0.5rem"></i>{{ .Name }}
-      </a>
-      {{ end }}
-      {{ range .Translations }}
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <!-- navbar start, navbar end -->
+      <div class="navbar-start"></div>
+      <div class="navbar-end">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        <a href="{{ .URL | relURL }}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }} is-active {{ end }}">
+          <i class="{{ .Pre }} fa-xs" style="padding-right:0.5rem"></i>{{ .Name }}
+        </a>
+        {{ end }}
+        {{ range .Translations }}
         <a class="navbar-item" href="{{ .Permalink }}">
           <i class="far fa-comments fa-xs" style="padding-right:0.5rem"></i>{{ .Language.LanguageName }}
         </a>
-      {{ end}}
+        {{ end}}
+      </div>
     </div>
   </div>
 </nav>

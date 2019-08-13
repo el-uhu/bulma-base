@@ -1,0 +1,55 @@
+<section id="hero" class="hero is-medium">
+  <div class="hero-head">
+    <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navbarMenuHeroA" class="navbar-menu">
+        <div class="navbar-end">
+          {{ $currentPage := . }}
+          {{ range .Site.Menus.main }}
+          <a href="{{ .URL | relURL }}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }} is-active {{ end }}">
+            <i class="{{ .Pre }} fa-xs" style="padding-right:0.5rem"></i>{{ .Name }}
+          </a>
+          {{ end }}
+          <span class="navbar-item" href="{{ .Permalink }}">
+            {{ range .Translations }}
+            <a class="button is-primary">
+              <span class="icon">
+                <i class="far fa-comments fa-xs"></i>
+              </span>
+              <span>{{ .Language.LanguageName }}</span>
+            </a>
+            {{ end }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  </div>
+  <div class="hero-body">
+    <div class="container" style="z-index:2">
+      <figure class="image is-128x128">
+        <img class="center" src="{{ .Site.Params.logo.notext | relURL }}">
+      </figure>
+      <h1 class="branding "> BIOTOP*</h1>
+      <h2 class="branding-subtitle ">SCIENCE COLLECTIVE</h2>
+    </div>
+  </div>
+  <!-- Hero footer: will stick at the bottom -->
+
+</section>
+<section class="hero is-primary has-text-centered is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title hero-quote">
+        {{ .Site.Params.description }}
+      </h1>
+    </div>
+  </div>
+</section>

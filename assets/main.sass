@@ -7,7 +7,10 @@
 
 $family-primary: 'Lato', sans-serif
 
-
+$primary: #347175
+$info: #459e8a
+$success: #74cb91
+$link: $info
 
 @import "node_modules/bulma/bulma.sass"
 @import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss"
@@ -42,6 +45,14 @@ $family-primary: 'Lato', sans-serif
 	letter-spacing: 0.12em
 	@media (max-width: 1215px)
 		font-size: 0.6rem
+
+.hero-quote
+	font-family: 'Raleway', sans-serif
+	font-weight: 400
+	letter-spacing: 0.12em
+	text-transform: uppercase
+	@media (max-width: 768px)
+		font-size: 1rem
 
 // Hugo TOC: Dirty Fix
 nav > ul > li > ul

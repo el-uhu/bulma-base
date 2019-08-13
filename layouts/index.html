@@ -1,9 +1,56 @@
+{{ define "header" }}
+  {{ partial "hero.html" . }}
+{{ end }}
+
+{{ define "aside" }}
+  {{ partial "aside-ix.html" . }}
+{{ end }}
+
 {{ define "main" }}
-<div class="content">
-  <h1 class="title">{{ .Title }}</h1>
-  {{ with .Params.subtitle }}
-        <h2 class="subtitle has-text-grey">{{.}}</h2>
-        {{ end }}
-  <p>{{ .Content }}</p>
-</div>
+  <section class="content">
+    <div class="content">
+      <p>{{ .Content }}</p>
+    </div>
+  </section>
+
+  {{ partial "timeline.html" . }}
+
+  {{ range .Pages }}
+    {{ if eq .Params.type "index" }}
+      <section class = "section" id="{{ .Title | urlize }}">
+        <div class="center">
+          <div class="image is-128x128 has-background-light center" style="border-radius:50%;">
+            <i class="{{ .Params.headericon }} center fa-5x is-rounded"></i>
+          </div>
+        </div>
+        <div class="center">
+          <div class="content has-text-centered">
+            <h1 class="title">{{ .Title }}</h1>
+            {{ with .Params.description }}
+            <h4 class="subtitle has-text-grey"> {{ . }}</h4>
+            {{ end }}
+          </div>
+        </div>
+        <div class="content">
+
+          {{ with .Params.featured }}
+          <figure class="image">
+            <img src="{{ . }}" alt="">
+          </figure>
+          {{ end }}
+          {{ with .Params.subtitle }}
+            <h2 class="subtitle has-text-grey">{{.}}</h2>
+          {{ end }}
+          <p>{{ .Content }}</p>
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+
+{{ end }}
+
+{{ define "custom-js" }}
+<script src="https://d3js.org/d3.v3.min.js"></script>
+{{ $scripts := resources.Get "voronoi.js" }}
+<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
 {{ end }}
