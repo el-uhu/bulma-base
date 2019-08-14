@@ -1,0 +1,29 @@
+<input type="date" data-display-mode="inline" data-show-clear-button="false">
+
+<!-- save event data  in as javascript object -->
+<script type="text/javascript">
+  var eventDates = [ {{ range .Pages }} { title: {{ .Title }}, title: {{ .Params.description }}, date : {{ .Date }}, type : {{ .Params.type }}, link : {{ .Permalink }} },{{ end }} ];
+
+  // check for DOM changes
+  MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+  var observer = new MutationObserver(function(mutations, observer) {
+      // fired when a mutation occurs
+      for (var i = 0; i < eventDates.length; i++) {
+          //    filter shown dates for entry eventDates
+          //    change class to show presence of event/blog-entry and create link to post
+          var filtered = $("div.datepicker-dates").filter(function(){})
+          console.log(filtered);
+      }
+      // ...
+  });
+
+  // define what element should be observed by the observer
+  // and what types of mutations trigger the callback
+  observer.observe(document, {
+    subtree: true,
+    attributes: true
+    //...
+  });
+
+</script>

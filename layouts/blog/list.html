@@ -1,0 +1,42 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-default-list{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "header" }}
+  {{ partial "header.html" . }}
+{{ end }}
+
+{{ define "aside" }}
+  {{ partial "aside-list.html" . }}
+{{ end }}
+
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<h1 class="title is-1">{{ .Title }}</h1>
+<div class="content">
+  {{ .Content }}
+</div>
+
+{{ partial "calendar.html" . }}
+
+<section class="section">
+  <div class="columns is-multiline">
+    {{ range.Sections }}
+      <div class="column is-half">
+        {{ partial "card.html" . }}
+      </div>
+    {{ end }}
+    {{ range.Pages }}
+      <div class="column is-half">
+        {{ partial "card.html" . }}
+      </div>
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}
+
+{{ define "custom-js"}}
+{{ $scripts := resources.Get "calendar.js" }}
+<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+{{ end }}
