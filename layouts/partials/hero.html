@@ -41,7 +41,7 @@
 </section>
 
 </section>
-<section class="hero is-link has-text-centered is-fullheight">
+<section class="hero is-link has-text-centered is-medium">
   <div class="hero-body">
     <div class="container">
       <h1 class="title hero-quote"> About Biotop </h1>
@@ -49,13 +49,13 @@
 
         {{ range .Pages }}
           {{ if eq .Params.type "index" }}
-            <div class="column is-one-quarter">
+            <div class="column is-one-third is-tablet">
               {{ partial "bubble-small.html" . }}
             </div>
           {{ end}}
         {{ end }}
         {{ range .Sections }}
-          <div class="column is-one-quarter">
+          <div class="column is-one-third is-tablet">
             {{ partial "bubble-small.html" . }}
           </div>
         {{ end }}

@@ -1,7 +1,28 @@
 <footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-    </p>
+  <div class="content">
+    <div class="level columns">
+      {{ range .Pages }}
+        {{ if eq .Params.type "footer"}}
+        <div class="level-item column is-half center">
+          <div class="media">
+            <div class="media-left">
+              <a href="#{{ .Title | urlize }}">
+                <div class="image is-64x64 has-background-light center" style="border-radius:50%;">
+                  <i class="{{ .Params.headericon }} center fa-2x is-rounded has-text-dark"></i>
+                </div>
+              </a>
+            </div>
+            <div class="media-content">
+              <h1 class="title is-5">{{ .Title }}</h1>
+              <p> {{ .Content }}</p>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      {{ end }}
+      <div class="level-item column is-half">
+      </div>
+    </div>
   </div>
 </footer>
 

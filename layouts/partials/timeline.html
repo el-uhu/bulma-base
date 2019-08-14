@@ -1,6 +1,5 @@
 <div class="timeline is-centered">
-  {{ $timelinedata := .Site.Data.timeline }}
-  {{ range $timelinedata }}
+  {{ range . }}
     <header class="timeline-header">
       <span class="tag is-medium is-primary"> {{ .name }}</span>
     </header>

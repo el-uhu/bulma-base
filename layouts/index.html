@@ -12,6 +12,10 @@
     <div class="content">
       <p>{{ .Content }}</p>
     </div>
+    {{ with (index .Site.Data.timeline "landingpage") }}
+      {{ partial "timeline.html" . }}
+    {{ end }}
+
   </section>
 
   {{ range .Pages }}
@@ -30,9 +34,7 @@
           {{ end }}
           <p>{{ .Content }}</p>
 
-          {{ if eq .Params.renderTimeline "true" }}
-            {{ partial "timeline.html" . }}
-          {{ end }}
+
         </div>
       </section>
     {{ end }}
