@@ -1,0 +1,17 @@
+
+<div class="column">
+  <div class="media padded">
+    <div class="media-left center">
+      <p class="image is-128x128">
+        <img class="is-rounded" src="{{ .featured }}">
+      </p>
+    </div>
+    <div class="media-content content">
+      <span class="title has-text-weight-bold is-size-5"> {{ .name }}</span><br>
+      <span class="subtitle has-text-grey is-size-6"> {{ .position }}, {{ .role }}</span><br>
+      <div class="content">
+        <p>{{ .bio.en | markdownify }}</p>
+      </div>
+    </div>
+  </div>
+</div>

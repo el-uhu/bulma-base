@@ -1,0 +1,19 @@
+<div class="center">
+  {{ if eq .Params.type "index"}}
+  <a href="#{{ .Title | urlize }}">
+  {{ else }}
+  <a href="{{ .Permalink }}">
+  {{ end }}
+    <div class="image is-128x128 has-background-light center" style="border-radius:50%;">
+      <i class="{{ .Params.headericon }} center fa-3x is-rounded has-text-dark"></i>
+    </div>
+  </a>
+</div>
+<div class="center">
+  <div class="content has-text-centered">
+    <h1 class="title">{{ .Title }}</h1>
+    {{ with .Params.description }}
+    <h4 class="subtitle"> {{ . }}</h4>
+    {{ end }}
+  </div>
+</div>

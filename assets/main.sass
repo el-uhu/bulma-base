@@ -7,15 +7,26 @@
 
 $family-primary: 'Lato', sans-serif
 
-$primary: #347175
-$info: #459e8a
+$primary: #2e4653
+$info: #347175
 $success: #74cb91
-$link: $info
+$link: #459e8a
+
+@import "/node_modules/bulma/sass/utilities/initial-variables.sass"
+$navbar-breakpoint: 6000px
 
 @import "node_modules/bulma/bulma.sass"
 @import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss"
 @import "node_modules/bulma-timeline/src/sass/index.sass"
 
+html
+	scroll-behaviour: smooth
+
+.body
+	scroll-snap-type: y mandatory
+
+section
+  scroll-snap-align: start
 
 .center
 	display: flex
@@ -51,6 +62,7 @@ $link: $info
 	font-weight: 400
 	letter-spacing: 0.12em
 	text-transform: uppercase
+	z-index: 2
 	@media (max-width: 768px)
 		font-size: 1rem
 
@@ -60,3 +72,6 @@ nav > ul > li > ul
 
 p
 	text-align: justify
+
+img.no-fit
+	object-fit: cover

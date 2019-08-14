@@ -1,5 +1,6 @@
 {{ define "header" }}
   {{ partial "hero.html" . }}
+  {{ partial "header.html" . }}
 {{ end }}
 
 {{ define "aside" }}
@@ -7,30 +8,16 @@
 {{ end }}
 
 {{ define "main" }}
-  <section class="content">
+  <section class="content" id="idx-content">
     <div class="content">
       <p>{{ .Content }}</p>
     </div>
   </section>
 
-  {{ partial "timeline.html" . }}
-
   {{ range .Pages }}
     {{ if eq .Params.type "index" }}
       <section class = "section" id="{{ .Title | urlize }}">
-        <div class="center">
-          <div class="image is-128x128 has-background-light center" style="border-radius:50%;">
-            <i class="{{ .Params.headericon }} center fa-5x is-rounded"></i>
-          </div>
-        </div>
-        <div class="center">
-          <div class="content has-text-centered">
-            <h1 class="title">{{ .Title }}</h1>
-            {{ with .Params.description }}
-            <h4 class="subtitle has-text-grey"> {{ . }}</h4>
-            {{ end }}
-          </div>
-        </div>
+        {{ partial "bubble.html" . }}
         <div class="content">
 
           {{ with .Params.featured }}
@@ -42,6 +29,10 @@
             <h2 class="subtitle has-text-grey">{{.}}</h2>
           {{ end }}
           <p>{{ .Content }}</p>
+
+          {{ if eq .Params.renderTimeline "true" }}
+            {{ partial "timeline.html" . }}
+          {{ end }}
         </div>
       </section>
     {{ end }}

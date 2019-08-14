@@ -7,7 +7,7 @@
 {{ end }}
 
 {{ define "aside" }}
-  {{ partial "aside-list.html" . }}
+  {{ partial "aside.html" . }}
 {{ end }}
 
 {{ define "main" }}
@@ -19,15 +19,13 @@
 
 <section class="section">
   <div class="columns is-multiline">
-    {{ range.Sections }}
-      <div class="column is-half">
-        {{ partial "card.html" . }}
-      </div>
-    {{ end }}
     {{ range.Pages }}
-      <div class="column is-half">
-        {{ partial "card.html" . }}
-      </div>
+    <div class="columns">
+      {{ with .Params.id }}
+      {{ $persondata := (index $.Site.Data.authors .)}}
+      {{ partial "person-info" $persondata}}
+      {{ end }}
+    </div>
     {{ end }}
   </div>
 </section>

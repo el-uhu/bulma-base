@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-content">
+    {{ with .Date }}
+      <p class="title is-7 has-text-right has-text-info">{{ .Format "02.01.2006" }}</p>
+    {{ end }}
+  </div>
+  <div class="card-image">
+    <a href="{{ .Permalink }}">
+      <figure class="image is-4by3">
+        {{ with .Params.featured }}
+        <img class="no-fit" src="{{ . }}" alt="">
+        {{ else }}
+        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+        {{ end }}
+      </figure>
+    </a>
+  </div>
+  <div class="card-content">
+      <div class="content">
+        <a href="{{ .Permalink }}">
+          <p class="title is-4 has-text-primary ">{{ .Title }}</p>
+          <p class="subtitle is-6 has-text-grey">{{ .Params.description }}</p>
+        </a>
+      </div>
+      <div class="columns">
+        {{ range .Params.authors }}
+        {{ $authordata := (index $.Site.Data.authors .)}}
+        {{ partial "author-info-small" $authordata}}
+        {{ end }}
+      </div>
+  </div>
+</div>
