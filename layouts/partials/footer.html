@@ -28,7 +28,3 @@
 
 {{ $scripts := resources.Get "main.js" }}
 <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
-{{ $scripts := resources.Get "node_modules/bulma-calendar/dist/js/bulma-calendar.min.js" }}
-<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
-{{ $scripts := resources.Get "node_modules/jquery/dist/jquery.slim.min.js" }}
-<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>

@@ -17,25 +17,26 @@
   {{ .Content }}
 </div>
 
-<section>
+<section class="section is-hidden-desktop">
   {{ partial "calendar.html" . }}
 </section>
 
 <section class="section">
-  <div class="columns">
-    {{ range.Sections }}
-      <div class="column is-half">
-        {{ partial "card.html" . }}
-      </div>
-    {{ end }}
+  <div class="columns is-multiline">
     {{ range.Pages }}
-      <div class="column is-half">
+      <div class="column is-full">
         {{ partial "card.html" . }}
       </div>
     {{ end }}
   </div>
 </section>
 
+{{ end }}
+
+{{ define "r-aside" }}
+<div class="column is-hidden-touch is-2">
+  {{ partial "aside-cal.html" . }}
+</div>
 {{ end }}
 
 {{ define "custom-js"}}

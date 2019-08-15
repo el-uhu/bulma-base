@@ -1,44 +1,98 @@
-<input type="date" data-display-mode="inline" data-show-clear-button="false">
+<div class="columns is-centered is-multiline">
+  <div class="column is-full">
+    <input id="calendar" type="date" data-display-mode="inline" data-show-clear-button="false">
+  </div>
+  <div class="column is-full">
+    <div class="columns is-multiline">
+      <div class="column is-full">
+        <h1></h1>
+      </div>
+      {{ range .Pages }}
+        <div class="search-item column is-full cls-{{ dateFormat "2006-01-02" .Date  }}">
+          <div class="content">
+            <a href="{{ .Permalink }}">
+              <p class="title is-7 has-text-info">{{ .Date.Format "02.01.2006" }}</p>
+              <p class="title is-6 has-text-primary ">{{ .Title }}</p>
+              <p class="subtitle is-7 has-text-grey">{{ .Params.description }}</p>
+            </a>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
 
 <!-- save event data  in as javascript object -->
+{{ $scripts := resources.Get "node_modules/jquery/dist/jquery.slim.min.js" }}
+<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+{{ $scripts := resources.Get "node_modules/bulma-calendar/dist/js/bulma-calendar.min.js" }}
+<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
 <script type="text/javascript">
-  var eventDates = [ {{ range .Pages }} { title: {{ .Title }}, description: {{ .Params.description }}, date : {{ .Date }}, type : {{ .Params.type }}, link : {{ .Permalink }} },{{ end }} ];
+
+  // requires id of objects to hav class cls-YYYY-MM-DD
+  var eventDates = [ {{ range .Pages }} { title: {{ .Title }}, description: {{ .Params.description }}, date : {{ dateFormat "2006-01-02" .Date  }}, type : {{ .Params.type }}, link : {{ .Permalink }} },{{ end }}];
 
   var colormap = {"event" : "has-background-warning", "blog" : "has-background-link"}
 
-  // check for DOM changes
-  MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+  function normaliseDatestring(datestring) {
+    var d = new Date(datestring).setHours(0,0,0,0)
+    return d
+  }
 
-  var observer = new MutationObserver(function(mutations, observer) {
-      // fired when a mutation occurs
-      var year = $("div.datepicker-year.is-active").data("year")
-      var month = $("div.datepicker-month.is-active").data("month")
-      var days = $("div.datepicker-days > div.datepicker-date")
-      console.log(year, month);
-      new Date(eventDates[0].date).setHours(0,0,0,0) == new Date($(".datepicker-days > .datepicker-date.datepicker-range-start").data("date")).setHours(0,0,0,0)
+  function findLink(datestring, eventDates) {
+    return eventDates.find(x => normaliseDatestring(x.date) === normaliseDatestring(datestring)).link
+  };
 
-      for ( var i = 0; i < days.length; i++ ){
-        for (var j = 0; j < eventDates.length; j++) {
-          var eventdate = new Date(eventDates[j].date).setHours(0,0,0,0);
-          var datestring = $(days[i]).data("date")
-          var datepickerdate = new Date(datestring).setHours(0,0,0,0)
-          // console.log(datepickerdate)
-          if ( eventdate == datepickerdate ){
-            console.log(eventDates[j].title)
-            $(days[i]).children("button").addClass(colormap[eventDates[j].type])
-          }
+  function findID(datestring, eventDates) {
+    return eventDates.find(x => normaliseDatestring(x.date) === normaliseDatestring(datestring)).date
+  };
+
+
+  // Initialize all input of type date
+  var calendars = bulmaCalendar.attach('[type="date"]');
+
+  // Loop on each calendar initialized
+  for(var i = 0; i < calendars.length; i++) {
+  	// Add listener to date:selected event
+  	calendars[i].on('select', date => {
+      $(".search-res").removeClass("search-res").addClass("search-item")
+      var id = findID(date.data.value(), eventDates);
+      var el = $(".cls-"+id)
+      $(el).removeClass("search-item").addClass("search-res")
+      console.log(el);
+
+  	});
+  }
+
+
+
+  // Compare eventDates with calendar elements and color elements if the correspond to an event
+  function colorDates(eventDates, colormap) {
+    var days = $("div.datepicker-days > div.datepicker-date")
+
+    for ( var i = 0; i < days.length; i++ ){
+      for (var j = 0; j < eventDates.length; j++) {
+        var eventdate = new Date(eventDates[j].date).setHours(0,0,0,0);
+        var datestring = $(days[i]).data("date")
+        var datepickerdate = new Date(datestring).setHours(0,0,0,0)
+        // console.log(datepickerdate)
+        if ( eventdate == datepickerdate ){
+          $(days[i]).children("button").addClass(colormap[eventDates[j].type])
         }
       }
+    }
+  }
 
-      // ...
-  });
 
-  // define what element should be observed by the observer
-  // and what types of mutations trigger the callback
+
+  colorDates(eventDates, colormap);
+  // check for DOM changes
+  MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+  var observer = new MutationObserver(function(mutations, observer) {colorDates(eventDates, colormap)});
   observer.observe(document, {
     subtree: true,
     attributes: true
     //...
   });
-
 </script>

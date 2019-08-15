@@ -1,0 +1,44 @@
+<input type="date" data-display-mode="inline" data-show-clear-button="false">
+
+<!-- save event data  in as javascript object -->
+<script type="text/javascript">
+  var eventDates = [ {{ range .Pages }} { title: {{ .Title }}, description: {{ .Params.description }}, date : {{ .Date }}, type : {{ .Params.type }}, link : {{ .Permalink }} },{{ end }} ];
+
+  var colormap = {"event" : "has-background-warning", "blog" : "has-background-link"}
+
+  // check for DOM changes
+  MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+  var observer = new MutationObserver(function(mutations, observer) {
+      // fired when a mutation occurs
+      var year = $("div.datepicker-year.is-active").data("year")
+      var month = $("div.datepicker-month.is-active").data("month")
+      var days = $("div.datepicker-days > div.datepicker-date")
+      console.log(year, month);
+      new Date(eventDates[0].date).setHours(0,0,0,0) == new Date($(".datepicker-days > .datepicker-date.datepicker-range-start").data("date")).setHours(0,0,0,0)
+
+      for ( var i = 0; i < days.length; i++ ){
+        for (var j = 0; j < eventDates.length; j++) {
+          var eventdate = new Date(eventDates[j].date).setHours(0,0,0,0);
+          var datestring = $(days[i]).data("date")
+          var datepickerdate = new Date(datestring).setHours(0,0,0,0)
+          // console.log(datepickerdate)
+          if ( eventdate == datepickerdate ){
+            console.log(eventDates[j].title)
+            $(days[i]).children("button").addClass(colormap[eventDates[j].type])
+          }
+        }
+      }
+
+      // ...
+  });
+
+  // define what element should be observed by the observer
+  // and what types of mutations trigger the callback
+  observer.observe(document, {
+    subtree: true,
+    attributes: true
+    //...
+  });
+
+</script>
