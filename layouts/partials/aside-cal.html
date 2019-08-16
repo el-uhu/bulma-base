@@ -1,7 +1,12 @@
-<aside class="menu is-hidden-mobile" style="margin-top:9rem">
+<aside class="menu is-hidden-mobile">
+  <figure class="image is-128x128">
+    <img class="center" src="{{ .Site.Params.logo.notext | relURL }}">
+  </figure>
+  <h1 class="branding "> BIOTOP*</h1>
+  <h2 class="branding-subtitle ">SCIENCE COLLECTIVE</h2>
   <p class="menu-label"> Calendar</p>
-    <ul class="menu-list">
-      {{ partial "calendar.html" . }}
-    </ul>
+  <ul class="menu-list">
+    {{ partial "calendar.html" . }}
   </ul>
+</ul>
 </aside>

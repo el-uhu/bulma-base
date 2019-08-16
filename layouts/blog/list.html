@@ -7,36 +7,30 @@
 {{ end }}
 
 {{ define "aside" }}
-  {{ partial "aside-list.html" . }}
+  {{ partial "aside-cal.html" . }}
 {{ end }}
 
 {{ define "main" }}
-{{ partial "breadcrumb.html" . }}
-<h1 class="title is-1">{{ .Title }}</h1>
-<div class="content">
-  {{ .Content }}
-</div>
-
-<section class="section is-hidden-desktop">
-  {{ partial "calendar.html" . }}
-</section>
-
-<section class="section">
-  <div class="columns is-multiline">
-    {{ range.Pages }}
-      <div class="column is-full">
-        {{ partial "card.html" . }}
-      </div>
-    {{ end }}
+  {{ partial "breadcrumb.html" . }}
+  <h1 class="title is-1">{{ .Title }}</h1>
+  <div class="content">
+    {{ .Content }}
   </div>
-</section>
 
-{{ end }}
+  <section class="section is-hidden-desktop">
+    {{ partial "calendar.html" . }}
+  </section>
 
-{{ define "r-aside" }}
-<div class="column is-hidden-touch is-2">
-  {{ partial "aside-cal.html" . }}
-</div>
+  <section class="section">
+    <div class="columns is-multiline">
+      {{ range.Pages }}
+        <div class="column is-full">
+          {{ partial "card.html" . }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
 {{ end }}
 
 {{ define "custom-js"}}
