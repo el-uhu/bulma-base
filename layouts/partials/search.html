@@ -1,0 +1,25 @@
+<div class="columns is-centered is-multiline">
+  <div class="column is-full">
+    <input class="input" type="text" placeholder="Search this page">
+  </div>
+  <div class="column is-full">
+    <div class="columns is-multiline">
+      <div class="column is-full">
+        <h1></h1>
+      </div>
+      {{ range .Site.RegularPages }}
+        <div class="search-item column is-full cls-{{ dateFormat "2006-01-02" .Date  }}">
+          <div class="content">
+            <a href="{{ .Permalink }}">
+              <p class="title is-7 has-text-info">{{ .Date.Format "02.01.2006" }}</p>
+              <p class="title is-6 has-text-primary ">{{ .Title }}</p>
+              <p class="subtitle is-7 has-text-grey">{{ .Params.description }}</p>
+              <p class="subtitle is-7 has-text-grey">{{ .Params.authors }}</p>
+            </a>
+            <hr>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>

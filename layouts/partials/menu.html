@@ -1,0 +1,48 @@
+<p class="menu-label">
+  {{ .Title }}
+</p>
+<ul id="sb-menu" class="menu-list">
+  {{ range .Site.RegularPages }}
+  {{ if eq .Params.type "index" }}
+  <li>
+    <a href="#{{ .Title | urlize }}">
+      {{ with .Params.headericon }}
+      <i class="{{ . }}"></i>
+      {{ end }}
+      {{ .Title }}
+    </a>
+  </li>
+  {{ end}}
+  {{ end }}
+  {{ range .Sections }}
+  <li>
+    <a href="{{ .Permalink }}">
+      {{ with .Params.headericon }}
+      <i class="{{ . }}"></i>
+      {{ end }}
+      {{ .Title }}
+    </a>
+  </li>
+  {{ end }}
+
+  {{ if .IsTranslated }}
+  <p class="menu-label"> Translations</p>
+  <ul class="menu-list">
+    {{ range .Translations }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+    </li>
+    {{ end}}
+  </ul>
+  {{ end }}
+
+  {{ $related := .Site.RegularPages.Related . | first 5 }}
+  {{ with $related }}
+  <p class="menu-label">See Also</p>
+  <ul class="menu-list">
+    {{ range . }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</ul>

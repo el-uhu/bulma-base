@@ -1,52 +1,24 @@
 <aside class="menu is-hidden-mobile">
-  <p class="menu-label">
-    {{ .Title }}
-  </p>
-  <ul class="menu-list">
-    {{ range .Site.RegularPages }}
-      {{ if eq .Params.type "index" }}
-        <li>
-          <a href="#{{ .Title | urlize }}">
-            {{ with .Params.headericon }}
-              <i class="{{ . }}"></i>
-            {{ end }}
-            {{ .Title }}
-          </a>
-        </li>
-      {{ end}}
-    {{ end }}
-    {{ range .Sections }}
-    <li>
-      <a href="{{ .Permalink }}">
-        {{ with .Params.headericon }}
-        <i class="{{ . }}"></i>
-        {{ end }}
-        {{ .Title }}
-      </a>
-    </li>
-    {{ end }}
+  <div class="tabs">
+    <ul>
+      <li class="tab is-active" onclick="openTab(event,'content-sb-tab-menu')"><a class="menu-label">Menu</a></li>
+      <li class="tab" onclick="openTab(event,'content-sb-tab-calendar')"><a class="menu-label">Calendar</a></li>
+      <li class="tab" onclick="openTab(event,'content-sb-tab-search')"><a class="menu-label">Search</a></li>
+    </ul>
+  </div>
 
-    {{ if .IsTranslated }}
-      <p class="menu-label"> Translations</p>
-      <ul class="menu-list">
-        {{ range .Translations }}
-        <li>
-          <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-        </li>
-        {{ end}}
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="content-tab" id="content-sb-tab-menu">
+      {{ partial "menu.html" . }}
+    </div>
+    <div class="content-tab" id="content-sb-tab-calendar" style="display:none">
+      <ul id="sb-cal" class="menu-list">
+        {{ partial "calendar.html" . }}
       </ul>
-    {{ end }}
-
-    {{ $related := .Site.RegularPages.Related . | first 5 }}
-    {{ with $related }}
-      <p class="menu-label">See Also</p>
-      <ul class="menu-list">
-        {{ range . }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-        {{ end }}
-      </ul>
-    {{ end }}
-  </ul>
-
-
+    </div>
+    <div class="content-tab" id="content-sb-tab-search" style="display:none">
+      {{ partial "search.html" . }}
+    </div>
+  </div>
 </aside>
