@@ -25,9 +25,9 @@
 
 <!-- save event data  in as javascript object -->
 {{ $scripts := resources.Get "node_modules/jquery/dist/jquery.slim.min.js" }}
-<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+<script type="text/javascript" src="{{ $scripts .RelPermalink }}"></script>
 {{ $scripts := resources.Get "node_modules/bulma-calendar/dist/js/bulma-calendar.min.js" }}
-<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+<script type="text/javascript" src="{{ $scripts .RelPermalink }}"></script>
 <script type="text/javascript">
 
   // requires id of objects to hav class cls-YYYY-MM-DD

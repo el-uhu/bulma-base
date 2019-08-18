@@ -34,6 +34,4 @@
 {{ end }}
 
 {{ define "custom-js"}}
-{{ $scripts := resources.Get "calendar.js" }}
-<script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
 {{ end }}
