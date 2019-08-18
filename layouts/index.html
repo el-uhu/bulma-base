@@ -18,7 +18,7 @@
 
   </section>
 
-  {{ range .Pages }}
+  {{ range .Site.RegularPages }}
     {{ if eq .Params.type "index" }}
       <section class = "section" id="{{ .Title | urlize }}">
         {{ partial "bubble.html" . }}

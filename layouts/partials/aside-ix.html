@@ -3,7 +3,7 @@
     {{ .Title }}
   </p>
   <ul class="menu-list">
-    {{ range .Pages }}
+    {{ range .Site.RegularPages }}
       {{ if eq .Params.type "index" }}
         <li>
           <a href="#{{ .Title | urlize }}">

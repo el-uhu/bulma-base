@@ -30,7 +30,7 @@
     <h1 class="title hero-quote"> Recent Blogposts </h1>
     <div class="container">
       <div class="columns is-multiline is-centered">
-        {{ range first 3 (where .Site.Pages ".Params.type" "blog") }}
+        {{ range first 3 (where .Site.RegularPages ".Params.type" "blog") }}
         <div class="column is-quarter">
           {{ partial "card.html" . }}
         </div>
@@ -47,7 +47,7 @@
       <h1 class="title hero-quote"> About Biotop </h1>
       <div class="columns is-multiline is-centered">
 
-        {{ range .Pages }}
+        {{ range .Site.RegularPages }}
           {{ if eq .Params.type "index" }}
             <div class="column is-one-third is-tablet">
               {{ partial "bubble-small.html" . }}
