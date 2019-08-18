@@ -5,11 +5,20 @@
     </header>
     {{ range .events }}
       <div class="timeline-item is-primary">
-        <div class="timeline-marker is-primary"></div>
+        <!-- <div class="timeline-marker is-image is-64x64">
+          <div class="image">
+            <img class="is-rounded no-fit center" src="{{ .featured | relURL }}" alt="">
+          </div>
+        </div> -->
+        <div class="timeline-marker is-primary">
+
+        </div>
         <div class="timeline-content">
-          <p class="heading">{{ .month }}</p>
-          <p>{{ .title }}</p>
-          <p class="heading has-text-grey">{{ .location }}</p>
+          <a href="{{ .link | relLangURL }}">
+            <p class="heading has-little-margin">{{ .month }}</p>
+            <p>{{ .title }}</p>
+            <p class="heading has-little-margin has-text-grey">{{ .location }}</p>
+          </a>
         </div>
       </div>
     {{ end }}

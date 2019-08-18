@@ -7,7 +7,8 @@
       <div class="column is-full">
         <h1></h1>
       </div>
-      {{ range .Pages }}
+      <div class="calendar-search-results">
+        {{ range .Pages }}
         <div class="search-item column is-full cls-{{ dateFormat "2006-01-02" .Date  }}">
           <div class="content">
             <a href="{{ .Permalink }}">
@@ -18,7 +19,8 @@
             <hr>
           </div>
         </div>
-      {{ end }}
+        {{ end }}
+      </div>
     </div>
   </div>
 </div>
@@ -53,7 +55,7 @@
   for(var i = 0; i < calendars.length; i++) {
   	// Add listener to date:selected event
   	calendars[i].on('select', date => {
-      $(".search-res").removeClass("search-res").addClass("search-item")
+      $(".calendar-search-results > .search-res").removeClass("search-res").addClass("search-item")
       var id = findID(date.data.value(), eventDates);
       var el = $(".cls-"+id)
       $(el).removeClass("search-item").addClass("search-res")

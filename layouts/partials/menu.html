@@ -2,7 +2,7 @@
   {{ .Title }}
 </p>
 <ul id="sb-menu" class="menu-list">
-  {{ range .Site.RegularPages }}
+  {{ range .Site.Pages }}
   {{ if eq .Params.type "index" }}
   <li>
     <a href="#{{ .Title | urlize }}">
@@ -14,7 +14,7 @@
   </li>
   {{ end}}
   {{ end }}
-  {{ range .Sections }}
+  {{ range .Site.Sections }}
   <li>
     <a href="{{ .Permalink }}">
       {{ with .Params.headericon }}

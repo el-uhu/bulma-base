@@ -14,30 +14,26 @@
     </div>
     <div class="navbar-menu" id="navMenu">
       <!-- navbar-start, navbar-end... -->
-      <section class="padded">        
-        <div class="tabs">
-          <ul>
-            <li class="tab is-active" onclick="openTab(event,'content-sb-tab-menu')"><a class="menu-label">Menu</a></li>
-            <li class="tab" onclick="openTab(event,'content-sb-tab-calendar')"><a class="menu-label">Calendar</a></li>
-            <li class="tab" onclick="openTab(event,'content-sb-tab-search')"><a class="menu-label">Search</a></li>
-          </ul>
-        </div>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div class="content-tab" id="content-sb-tab-menu">
-            {{ partial "menu.html" . }}
-          </div>
-          <div class="content-tab" id="content-sb-tab-calendar" style="display:none">
-            <ul id="sb-cal" class="menu-list">
-              {{ partial "calendar.html" . }}
-            </ul>
-          </div>
-          <div class="content-tab" id="content-sb-tab-search" style="display:none">
-            {{ partial "search.html" . }}
-          </div>
-        </div>
-      </section>
+      <div class="padded">
+        {{ range $.Site.Pages }}
+          {{ if eq .Params.type "index" }}
+              <a href="#{{ .Title | urlize }}" class="navbar-item">
+                {{ with .Params.headericon }}
+                  <i class="{{ . }}"></i>
+                {{ end }}
+                {{ .Title }}
+              </a>
+          {{ end}}
+        {{ end }}
+        {{ range .Site.Sections }}
+          <a href="{{ .Permalink }}" class="navbar-item">
+            {{ with .Params.headericon }}
+            <i class="{{ . }}"></i>
+            {{ end }}
+            {{ .Title }}
+          </a>
+        {{ end }}
+      </div>
     </div>
   </div>
 </nav>
