@@ -11,8 +11,8 @@
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-  {{ $scripts := resources.Get "node_modules/jquery/dist/jquery.slim.min.js" }}
+  {{ $scripts := resources.Get "jquery.slim.min.js" }}
   <script type="text/javascript" src="{{ $scripts.Permalink }}"></script>
-  {{ $scripts := resources.Get "node_modules/bulma-calendar/dist/js/bulma-calendar.min.js" }}
+  {{ $scripts := resources.Get "bulma-calendar.min.js" }}
   <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
 </head>
