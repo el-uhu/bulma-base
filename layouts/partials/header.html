@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-brand" style="z-index:50">
       <!-- navbar items, navbar burger... -->
-      <a class="navbar-item" href="{{ .Site.BaseURL }}">
+      <a class="navbar-item" href="{{ .Site.BaseURL | relLangURL }}">
         <img src="{{ .Site.Params.logo.standard | relURL }}">
       </a>
 

@@ -6,7 +6,7 @@
         <img class="center" src="{{ .Site.Params.logo.notext | relURL }}">
       </figure>
       <h1 class="branding "> BIOTOP*</h1>
-      <h2 class="branding-subtitle ">SCIENCE COLLECTIVE</h2>
+      <h2 class="branding-subtitle ">{{ i18n "subtitle" }}</h2>
     </div>
   </div>
   <!-- Hero footer: will stick at the bottom -->
@@ -18,7 +18,7 @@
         {{ .Site.Params.description }}
       </h1>
       <h2 class="title hero-quote has-color-link is-5">
-        <a href="#idx-content"> More About Biotop</a>
+        <a href="#idx-content"> {{ i18n "more-about-biotop" }}</a>
       </h2>
     </div>
   </div>
@@ -27,7 +27,7 @@
 </section>
 <section class="hero is-info has-text-centered is-medium">
   <div class="hero-body">
-    <h1 class="title hero-quote"> Recent Blogposts </h1>
+    <h1 class="title hero-quote"> {{ i18n "recent-blogposts" }} </h1>
     <div class="container">
       <div class="columns is-multiline is-centered">
         {{ range first 3 (where .Site.RegularPages ".Params.type" "blog") }}
@@ -44,19 +44,21 @@
 <section class="hero is-link has-text-centered is-medium">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title hero-quote"> About Biotop </h1>
+      <h1 class="title hero-quote"> {{ i18n "about-biotop" }} </h1>
       <div class="columns is-multiline is-centered">
 
         {{ range .Site.RegularPages }}
           {{ if eq .Params.type "index" }}
             <div class="column is-one-third is-tablet">
-              {{ partial "bubble-small.html" . }}
+              {{ $pdict := (dict "data" . "imgSize" "is-64x64" "faSize" "fa-2x" "h1Size" "is-5" "h4Size" "is-6")}}
+              {{ partial "bubble.html" $pdict }}
             </div>
           {{ end}}
         {{ end }}
         {{ range .Sections }}
           <div class="column is-one-third is-tablet">
-            {{ partial "bubble-small.html" . }}
+            {{ $pdict := (dict "data" . "imgSize" "is-64x64" "faSize" "fa-2x" "h1Size" "is-5" "h4Size" "is-6")}}
+            {{ partial "bubble.html" $pdict }}
           </div>
         {{ end }}
       </div>

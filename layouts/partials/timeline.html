@@ -1,4 +1,5 @@
 <div class="timeline is-centered">
+  {{ $lang := (i18n "lang" )}}
   {{ range . }}
     <header class="timeline-header">
       <span class="tag is-medium is-primary"> {{ .name }}</span>

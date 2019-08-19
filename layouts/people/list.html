@@ -22,8 +22,9 @@
     {{ range.Pages }}
     <div class="columns">
       {{ with .Params.id }}
-      {{ $persondata := (index $.Site.Data.authors .)}}
-      {{ partial "person-info" $persondata}}
+        {{ $persondata := (index $.Site.Data.authors .)}}
+        {{ $pdict := (dict "data" $persondata "picsize" "is-128x128" "content" "true" "namesize" "is-size-5" "subsize" "is-size-6")}}
+        {{ partial "person-info" $pdict }}
       {{ end }}
     </div>
     {{ end }}

@@ -21,7 +21,8 @@
   {{ range .Site.RegularPages }}
     {{ if eq .Params.type "index" }}
       <section class = "section" id="{{ .Title | urlize }}">
-        {{ partial "bubble.html" . }}
+        {{ $pdict := (dict "data" . "imgSize" "is-128x128" "faSize" "fa-3x" "h1Size" " " "h4Size" " ")}}
+        {{ partial "bubble.html" $pdict }}
         <div class="content">
 
           {{ with .Params.featured }}

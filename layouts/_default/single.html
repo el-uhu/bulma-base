@@ -22,8 +22,9 @@
 
   <div class="columns">
     {{ range .Params.authors }}
-    {{ $authordata := (index $.Site.Data.authors .)}}
-    {{ partial "author-info" $authordata}}
+      {{ $persondata := (index $.Site.Data.authors .)}}
+      {{ $pdict := (dict "data" $persondata "picsize" "is-64x64" "content" "false" "namesize" "is-size-6" "subsize" "is-size-7")}}
+      {{ partial "person-info" $pdict }}
     {{ end }}
   </div>
 
