@@ -17,7 +17,7 @@
       <div class="padded">
         {{ range $.Site.Pages }}
           {{ if eq .Params.type "index" }}
-              <a href="#{{ .Title | urlize }}" class="navbar-item">
+              <a href="{{ .Site.BaseURL}}/{{ .Site.LanguagePrefix}}/#{{ .Title | urlize }}" class="navbar-item">
                 {{ with .Params.headericon }}
                   <i class="{{ . }}"></i>
                 {{ end }}
