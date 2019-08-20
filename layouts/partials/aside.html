@@ -3,6 +3,7 @@
     <ul>
       <li class="tab is-active" onclick="openTab(event,'content-sb-tab-menu')"><a class="menu-label">{{ i18n "menu" }}</a></li>
       <li class="tab" onclick="openTab(event,'content-sb-tab-calendar')"><a class="menu-label">{{ i18n "calendar" }}</a></li>
+      <li class="tab" onclick="openTab(event,'content-sb-tab-tags')"><a class="menu-label">{{ i18n "tags" }}</a></li>
     </ul>
   </div>
 
@@ -15,6 +16,9 @@
       <ul id="sb-cal" class="menu-list">
         {{ partial "calendar.html" . }}
       </ul>
+    </div>
+    <div class="content-tab" id="content-sb-tab-tags" style="display:none">
+        {{ partial "tags.html" . }}
     </div>
   </div>
 </aside>

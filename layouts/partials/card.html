@@ -1,29 +1,48 @@
-<div class="card">
-  <div class="card-content {{ .Params.type }}" id="{{ .Date }}">
-    {{ with .Date }}
-      <p class="title is-7 has-text-right has-text-info">{{ .Format "02.01.2006" }}</p>
-    {{ end }}
-  </div>
-  <div class="card-image">
-    <a href="{{ .Permalink }}">
-      <figure class="image">
-        {{partial "featured.html" .}}
-      </figure>
-    </a>
-  </div>
-  <div class="card-content">
-      <div class="content">
-        <a href="{{ .Permalink }}">
-          <p class="title is-4 has-text-primary ">{{ .Title }}</p>
-          <p class="subtitle is-6 has-text-grey">{{ .Params.description }}</p>
-        </a>
+    <header class = "card-top">
+      <div class="card-content {{ .Params.type }}" id="{{ .Date }}">
+        <div class="columns is-mobile">
+          <div class="column is-9 is-mobile has-text-left">
+            {{ range $key := .Param "tags"}}
+            <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+              <span class="menu-label">
+                #{{ $key }}
+              </span>
+            </a>
+            {{ end }}
+          </div>
+          <div class="column is-3 is-mobile has-text-right">
+            {{ with .Date }}
+            <span class="menu-label has-text-info">{{ .Format "02.01.2006" }}</span>
+            {{ end }}
+          </div>
+        </div>
       </div>
-      <div class="columns">
-        {{ range .Params.authors }}
+    </header>
+    <section class = "card-center">
+      <div class="card-content">
+        <div class="card-image is-4by3">
+          <a href="{{ .Permalink }}">
+            <figure class="image">
+              {{partial "featured.html" .}}
+            </figure>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class = "card-bottom">
+      <div class="card-content">
+        <div class="content">
+          <a href="{{ .Permalink }}">
+            <p class="title is-4 has-text-primary ">{{ .Title }}</p>
+            <p class="subtitle is-6 has-text-grey">{{ .Params.description }}</p>
+          </a>
+        </div>
+        <div class="columns">
+          {{ range .Params.authors }}
           {{ $authordata := (index $.Site.Data.authors .)}}
           {{ $pdict := (dict "data" $authordata "picsize" "is-32x32" "content" "false" "namesize" "is-size-7" "subsize" "is-size-7")}}
           {{ partial "person-info" $pdict }}
-        {{ end }}
+          {{ end }}
+        </div>
       </div>
-  </div>
-</div>
+    </section>

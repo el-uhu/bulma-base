@@ -33,6 +33,7 @@
   </ul>
   {{ end }}
 
+
   {{ $related := .Site.RegularPages.Related . | first 5 }}
   {{ with $related }}
   <p class="menu-label">See Also</p>
@@ -43,3 +44,5 @@
   </ul>
   {{ end }}
 </ul>
+<p class="menu-label"> {{ i18n "tags" }}</p>
+{{ partial "tags.html" .}}

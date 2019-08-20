@@ -14,25 +14,10 @@
     </div>
     <div class="navbar-menu" id="navMenu">
       <!-- navbar-start, navbar-end... -->
-      <div class="padded">
-        {{ range $.Site.Pages }}
-          {{ if eq .Params.type "index" }}
-              <a href="{{ .Site.BaseURL}}/{{ .Site.LanguagePrefix}}/#{{ .Title | urlize }}" class="navbar-item">
-                {{ with .Params.headericon }}
-                  <i class="{{ . }}"></i>
-                {{ end }}
-                {{ .Title }}
-              </a>
-          {{ end}}
-        {{ end }}
-        {{ range .Site.Sections }}
-          <a href="{{ .Permalink }}" class="navbar-item">
-            {{ with .Params.headericon }}
-            <i class="{{ . }}"></i>
-            {{ end }}
-            {{ .Title }}
-          </a>
-        {{ end }}
+      <div class="navbar-end">
+        <div class="padded">
+          {{ partial "menu.html" . }}
+        </div>
       </div>
     </div>
   </div>

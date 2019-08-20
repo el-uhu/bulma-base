@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="content">
     <div class="level columns">
-      {{ range .Pages }}
+      {{ range .Site.RegularPages }}
         {{ if eq .Params.type "footer"}}
         <div class="level-item column is-half center">
           <div class="media">

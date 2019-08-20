@@ -1,0 +1,17 @@
+{{ $thistaxonomy := .Param "tags"}}
+{{ $title := .Title}}
+{{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+  {{ if in $thistaxonomy $key }}
+    <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+      <span class="menu-label has-text-success">#{{ $key }} </span>
+    </a>
+  {{ else if eq $key $title}}
+    <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+      <span class="menu-label has-text-success">#{{ $key }} </span>
+    </a>
+  {{ else }}
+    <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+      <span class="menu-label">#{{ $key }} </span>
+    </a>
+  {{ end }}
+{{ end }}

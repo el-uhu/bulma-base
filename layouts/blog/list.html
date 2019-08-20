@@ -25,7 +25,9 @@
     <div class="columns is-multiline">
       {{ range.Pages }}
         <div class="column is-full">
-          {{ partial "card.html" . }}
+          <div class="card">
+            {{ partial "card.html" . }}
+          </div>
         </div>
       {{ end }}
     </div>

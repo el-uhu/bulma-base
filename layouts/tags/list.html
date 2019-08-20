@@ -12,7 +12,7 @@
 
 {{ define "main" }}
   {{ partial "breadcrumb.html" . }}
-  <h1 class="title is-1">{{ .Title }}</h1>
+  <h1 class="title is-1"style="text-transform:uppercase; letter-spacing:0.1rem;">#{{ .Title | title }}</h1>
   <div class="content">
     {{ .Content }}
   </div>

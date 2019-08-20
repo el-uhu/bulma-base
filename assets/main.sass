@@ -18,7 +18,6 @@ $timeline-content-padding: 0 0 0 0
 $navbar-breakpoint: 6000px
 
 @import "node_modules/bulma/bulma.sass"
-@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss"
 @import "node_modules/bulma-timeline/src/sass/index.sass"
 @import "node_modules/bulma-calendar/src/sass/index.sass"
 
@@ -27,9 +26,6 @@ html
 
 .body
 	scroll-snap-type: y mandatory
-
-section
-  scroll-snap-align: start
 
 .center
 	display: flex
@@ -46,6 +42,20 @@ section
   position: -webkit-sticky
   position: sticky
   top: 3rem
+
+.card-align
+	display: flex
+	flex-wrap: wrap
+  align-content: stretch
+
+.card-top
+	width: 100%
+
+.card-center
+	width: 100%
+
+.card-bottom
+	width: 100%
 
 .branding
 	font-family: 'Raleway', sans-serif
@@ -76,8 +86,7 @@ section
 nav > ul > li > ul
 	display: none
 
-p
-	text-align: justify
+
 
 img.no-fit
 	object-fit: cover
