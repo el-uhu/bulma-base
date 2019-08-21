@@ -1,0 +1,19 @@
+<div class="column">
+  <div class="media padded">
+    <div class="media-left">
+      <p class="image {{ .picsize }}">
+        <img class="is-rounded" src="{{ .data.featured | relURL }}">
+      </p>
+    </div>
+    <div class="media-content content">
+      {{ $lang := (i18n "lang")}}
+      <span class="title has-text-weight-bold {{ .namesize }} has-text-dark"> {{ .data.name }}</span><br>
+      <span class="subtitle has-text-grey {{ .subsize}}"> {{ index .data.role $lang }} | {{ index .data.trained $lang }}</span><br>
+      {{ if eq .content "true" }}
+        <div class="content">
+          <p>{{ (index .data.bio $lang) | markdownify }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
