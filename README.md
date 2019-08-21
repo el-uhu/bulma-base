@@ -6,10 +6,12 @@ Basic responsive theme for Hugo static sites using [Bulma](https://bulma.io/) fr
 - [Biotop Science Collective](http://biotop.github.io/biotop-new)
 
 
-## Requirements
+## Setup and Requirements
 - hugo "full version" to compile `sass`
 - tested with Hugo v0.57.2
-- Tranlslation strings (i18n) under '/hugo-site/i18n/en.toml', etc.
+- Tranlslation strings (i18n) under '/hugo-site/i18n/en.toml', etc. (see example page for template)
+- Custom `.sass`-file for injecting custom variables (colors, fonts) under `/hugo-site/assets/custom.sass`
+- Author data under `/hugo-site/data/authors.toml` (see example page for template)
 
 ## Functionality
 
