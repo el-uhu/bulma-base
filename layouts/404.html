@@ -1,5 +1,29 @@
-{{ define "main" }}
-  <div class="hero is-warning is-fullheight">
-    <h1>Page not found!</h1>
-  </div>
+{{ define "header" }}
+  {{ partial "header.html" . }}
+  <section class="hero is-light is-fullheight has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title is-family-monospace is-1">
+          404
+        </h1>
+        <h2 class="subtitle is-family-monospace is-2">
+          Page not found
+        </h2>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "custom-js" }}
+{{ $scripts := resources.Get "baffle.min.js" }}
+<script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
+
+<script type="text/javascript">
+  let t = baffle('.title');
+  t.reveal(12000,100);
+
+  let s = baffle('.subtitle');
+  s.reveal(24000,200);
+
+</script>
 {{ end }}
