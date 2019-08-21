@@ -1,14 +1,14 @@
 +++
-title = "{{ replace .Name "-" " " | title }}"
+title = "Test"
 authors = ["test-author"]
-date = "{{ .Date }}"
+date = "2019-08-21"
 description = ""
 featured = "/img/image-placeholder.png"
 featuredVideo = ""
 featuredVimeo = ""
 linktitle = ""
-type = ""
-tags = ["test-tag1", "test-tag2"]
+type = "blog"
+tags = []
 +++
 
 #Heading 1

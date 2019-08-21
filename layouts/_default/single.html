@@ -30,9 +30,22 @@
 
   {{ partial "featured.html" .}}
   {{ with .Params.subtitle }}
-        <h2 class="subtitle has-text-grey">{{.}}</h2>
-        {{ end }}
-  <p>{{ .Content }}</p>
+    <h2 class="subtitle has-text-grey">{{.}}</h2>
+  {{ end }}
+
+  <div id="contents">
+    <p>{{ .Content }}</p>
+  </div>
 </div>
 {{ partial "references.html" .}}
+{{ end }}
+
+{{ define "custom-js" }}
+<script>
+  mermaid.initialize({
+    startOnLoad:true,
+    theme:'neutral',
+    fontFamily: 'Source Code Pro'
+  });
+</script>
 {{ end }}
