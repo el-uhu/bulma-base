@@ -51,5 +51,6 @@ Implemented using [Bulma Timeline extension](https://wikiki.github.io/components
 Gets language relative path and returns framework consistent image element
 
 ##### Citation and Reference Shortcodes
-##### Font
-The default font is **Lato** and loaded using Google Fonts. The `.sass` dependencies and custom `css` can be found under `/assets/main.sass`
+
+## Customisation
+`main.sass` will automatically look for the file `hugo-site/assets/custom.sass` use this file to specify custom styling.
