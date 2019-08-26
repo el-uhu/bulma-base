@@ -3,41 +3,28 @@
 {{ end }}
 
 {{ define "header" }}
+  {{ partial "featured-hero.html" . }}
   {{ partial "header.html" . }}
 {{ end }}
 
 {{ define "aside" }}
+<div class="column is-hidden-mobile is-2">
   {{ partial "aside.html" . }}
+</div>
 {{ end }}
 
 {{ define "main" }}
-{{ partial "breadcrumb.html" . }}
+  <div class="column is-half has-navbar-fixed-top">
+  {{ partial "breadcrumb.html" . }}
 
-<div class="content">
-  <h5 class="subtitle has-text-grey is-7 has-text-weight-light">{{ .Date.Format "02.01.2006" }}</h5>
-  <h1 class="title">{{ .Title }}</h1>
-  {{ with .Params.description }}
-    <h4 class="subtitle has-text-grey"> {{ . }}</h4>
-  {{ end }}
+  <div class="content">
 
-  <div class="columns">
-    {{ range .Params.authors }}
-      {{ $persondata := (index $.Site.Data.authors .)}}
-      {{ $pdict := (dict "data" $persondata "picsize" "is-64x64" "content" "false" "namesize" "is-size-6" "subsize" "is-size-7")}}
-      {{ partial "person-info" $pdict }}
-    {{ end }}
+    <div id="contents">
+      <p>{{ .Content }}</p>
+    </div>
   </div>
-
-  {{ partial "featured.html" .}}
-  {{ with .Params.subtitle }}
-    <h2 class="subtitle has-text-grey">{{.}}</h2>
-  {{ end }}
-
-  <div id="contents">
-    <p>{{ .Content }}</p>
-  </div>
+  {{ partial "references.html" .}}
 </div>
-{{ partial "references.html" .}}
 {{ end }}
 
 {{ define "custom-js" }}

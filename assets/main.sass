@@ -8,6 +8,7 @@ $navbar-breakpoint: 6000px
 @import "node_modules/bulma/bulma.sass"
 @import "node_modules/bulma-timeline/src/sass/index.sass"
 @import "node_modules/bulma-calendar/src/sass/index.sass"
+@import "node_modules/bulma-carousel/src/sass/index.sass"
 
 html
 	scroll-behaviour: smooth
@@ -31,44 +32,15 @@ html
   position: sticky
   top: 3rem
 
-.card-align
-	display: flex
-	flex-wrap: wrap
-  align-content: stretch
+.slider-navigation-previous, .slider-navigation-next
+  color: $primary
 
-.card-top
-	width: 100%
+.item
+   height: 100%
 
-.card-center
-	width: 100%
+.card
+	height: 100%
 
-.card-bottom
-	width: 100%
-
-.branding
-	font-family: 'Raleway', sans-serif
-	font-weight: 900
-	font-size: 2.2rem
-	letter-spacing: 0.1em
-	@media (max-width: 1215px)
-		font-size: 1.5rem
-
-.branding-subtitle
-	font-family: 'Raleway', sans-serif
-	font-weight: 400
-	font-size: 0.8rem
-	letter-spacing: 0.12em
-	@media (max-width: 1215px)
-		font-size: 0.6rem
-
-.hero-quote
-	font-family: 'Raleway', sans-serif
-	font-weight: 400
-	letter-spacing: 0.12em
-	text-transform: uppercase
-	z-index: 2
-	@media (max-width: 768px)
-		font-size: 1rem
 
 // Hugo TOC: Dirty Fix
 ul.toc > li
@@ -102,3 +74,28 @@ h1::before, h2::before, h3::before
   height: $navbar-height
   visibility: hidden
   pointer-events: none
+
+.override-navbar
+	z-index: 50
+	position: relative
+
+.feature-hero
+	z-index: 50
+	background: $white
+
+.hero
+  &.has-background
+    position: relative
+    overflow: hidden
+  &-background
+    position: absolute
+    object-fit: cover
+    object-position: center top
+    width: 100%
+    height: 100%
+    &.is-transparent
+      opacity: 0.3
+
+.hero-foot
+	z-index: 42
+	background: rgba($light, 1)

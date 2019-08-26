@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js add baffle
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add bulma-carousel --no-link-bins
 
 PATH: 
   /home/luki/.local/bin/:"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
@@ -20,6 +20,7 @@ npm manifest:
   {
     "dependencies": {
       "autoprefixer": "^9.6.1",
+      "baffle": "^0.3.6",
       "bulma": "^0.7.5",
       "bulma-calendar": "^6.0.7",
       "bulma-timeline": "^3.0.4",
@@ -191,6 +192,11 @@ Lockfile:
       num2fraction "^1.2.2"
       postcss "^7.0.17"
       postcss-value-parser "^4.0.0"
+  
+  baffle@^0.3.6:
+    version "0.3.6"
+    resolved "https://registry.yarnpkg.com/baffle/-/baffle-0.3.6.tgz#989d8a6363a19e630da85a3480422883f0bda4d0"
+    integrity sha1-mJ2KY2OhnmMNqFo0gEIog/C9pNA=
   
   balanced-match@^1.0.0:
     version "1.0.0"
