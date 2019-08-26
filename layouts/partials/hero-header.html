@@ -1,0 +1,38 @@
+<div class="container section">
+  <div class="columns">
+    <div class="column is-9 has-text-left meta">
+      {{ range $key := .Param "tags"}}
+      <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+        <span class="menu-label">
+          #{{ $key }}
+        </span>
+      </a>
+      {{ end }}
+    </div>
+    <div class="column is-3 has-text-right meta">
+      {{ with .Date }}
+      <span class="menu-label has-text-info">{{ .Format "02.01.2006" }}</span>
+      {{ end }}
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-8 has-text-left has-margin-bottom">
+      <h1 class="title has-little-margin">
+        {{ .Title }}
+      </h1>
+      <h2 class="subtitle">
+        {{ .Params.description }}
+      </h2>
+    </div>
+    <div class="column is-4">
+      <div class="columns is-multiline">
+        {{ range .Params.authors }}
+        {{ $authordata := (index $.Site.Data.authors .)}}
+        {{ $pdict := (dict "data" $authordata "picsize" "is-32x32" "content" "false" "namesize" "is-6" "subsize" "is-7")}}
+        {{ partial "person-info" $pdict }}
+        {{ end }}
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -25,7 +25,17 @@ html
 	padding: 10px
 
 .has-little-margin
-	margin-bottom: 0.5em
+	margin-bottom: 0.1em !important
+
+.has-margin-bottom
+	margin-bottom: 0.75em !important
+
+.has-big-margin-bottom
+	margin-bottom: 3rem !important
+
+.has-no-padding
+	padding: 0px !important
+
 
 .menu
   position: -webkit-sticky
@@ -40,6 +50,15 @@ html
 
 .card
 	height: 100%
+	display: flex
+	flex-direction: column
+
+.card-bottom
+	flex-grow: 1
+
+.meta
+	padding-top: 0.1rem
+	padding-bottom: 0.1rem
 
 
 // Hugo TOC: Dirty Fix
@@ -99,3 +118,14 @@ h1::before, h2::before, h3::before
 .hero-foot
 	z-index: 42
 	background: rgba($light, 1)
+
+.prev, .next
+	position: absolute
+	z-index: 100
+
+.prev
+	left: auto
+	right: 20px
+
+.next
+	left: 20px

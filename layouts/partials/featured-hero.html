@@ -1,10 +1,30 @@
 {{ if .Params.featuredVideo}}
-<section class="hero is-small is-primary">
+<section class="hero is-fullheight has-background feature-hero">
+  <div class="hero-body" style="z-index:100">
+    {{ with .NextInSection }}
+    <div class="next">
+      <a class="button is-primary is-inverted" href="{{ .Permalink }}">
+        <i class="fas fa-chevron-left fa-lg"></i>
+      </a>
+    </div>
+    {{ end }}
+    {{ with .PrevInSection }}
+    <div class="prev">
+      <a class="button is-primary is-inverted" href="{{ .Permalink }}">
+        <i class="fas fa-chevron-right fa-lg"></i>
+      </a>
+    </div>
+    {{ end }}
+  </div>
+  <video  controls autoplay loop height=80%>
+    <source src="{{ .Params.featuredVideo |relURL }}" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+  <div class="hero-foot has-padding">
+    {{ partial "hero-header.html" . }}
+  </div>
 </section>
-    <video class="hero-background" controls autoplay loop width="100%">
-      <source src="{{ .Params.featuredVideo |relURL }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+
 {{ else if .Params.featuredVimeo}}
   <div style="padding:75% 0 0 0;position:relative;">
     <iframe src="https://player.vimeo.com/video/{{ .Params.featuredVimeo }}?autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
@@ -13,49 +33,25 @@
   <script src="https://player.vimeo.com/api/player.js"></script>
 {{ else if .Params.featured }}
 <section class="hero is-fullheight has-background feature-hero">
-  <div class="hero-head">
-    <!-- empty -->
+  <div class="hero-body" style="z-index:100">
+    {{ with .NextInSection }}
+    <div class="next">
+      <a class="button is-primary is-inverted" href="{{ .Permalink }}">
+        <i class="fas fa-chevron-left fa-lg"></i>
+      </a>
+    </div>
+    {{ end }}
+    {{ with .PrevInSection }}
+    <div class="prev">
+      <a class="button is-primary is-inverted" href="{{ .Permalink }}">
+        <i class="fas fa-chevron-right fa-lg"></i>
+      </a>
+    </div>
+    {{ end }}
   </div>
   <img class="hero-background" style="object-fit:scale-down" src="{{ .Params.featured | relURL }}"  alt="">
   <div class="hero-foot has-padding">
-    <div class="container section">
-      <div class="columns">
-        <div class="column is-9 has-text-left">
-          {{ range $key := .Param "tags"}}
-          <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
-            <span class="menu-label">
-              #{{ $key }}
-            </span>
-          </a>
-          {{ end }}
-        </div>
-        <div class="column is-3 has-text-right">
-          {{ with .Date }}
-          <span class="menu-label has-text-info">{{ .Format "02.01.2006" }}</span>
-          {{ end }}
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column is-8 has-text-left">
-          <h1 class="title">
-            {{ .Title }}
-          </h1>
-          <h2 class="subtitle">
-            {{ .Params.description }}
-          </h2>
-        </div>
-        <div class="column is-4">
-          <div class="columns is-multiline">
-            {{ range .Params.authors }}
-            {{ $authordata := (index $.Site.Data.authors .)}}
-            {{ $pdict := (dict "data" $authordata "picsize" "is-32x32" "content" "false" "namesize" "is-6" "subsize" "is-7")}}
-            {{ partial "person-info" $pdict }}
-            {{ end }}
-          </div>
-        </div>
-
-      </div>
-    </div>
+    {{ partial "hero-header.html" . }}
   </div>
 </section>
 

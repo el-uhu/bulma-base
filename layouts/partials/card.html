@@ -1,4 +1,4 @@
-<header class = "card-top">
+<header class = "card-top has-background-white">
   <div class="card-content {{ .Params.type }}" id="{{ .Date }}">
     <div class="columns">
       <div class="column is-9 has-text-left">
@@ -19,15 +19,13 @@
   </div>
 </header>
 <section class = "card-center">
-  <div class="card-content">
     <div class="card-image">
       <a href="{{ .Permalink }}">
         {{partial "featured-card.html" .}}
       </a>
     </div>
-  </div>
 </section>
-<section class = "card-bottom">
+<section class = "card-bottom has-background-light">
   <div class="card-content">
     <div class="content">
       <a href="{{ .Permalink }}">
@@ -35,7 +33,7 @@
         <p class="subtitle is-6 has-text-grey">{{ .Params.description }}</p>
       </a>
     </div>
-    <div class="columns">
+    <div class="columns is-multiline">
       {{ range .Params.authors }}
       {{ $authordata := (index $.Site.Data.authors .)}}
       {{ $pdict := (dict "data" $authordata "picsize" "is-32x32" "content" "false" "namesize" "is-7" "subsize" "none")}}

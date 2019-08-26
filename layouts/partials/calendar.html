@@ -12,9 +12,9 @@
         <div class="search-item column is-full cls-{{ dateFormat "2006-01-02" .Date  }}">
           <div class="content">
             <a href="{{ .Permalink }}">
-              <p class="title is-7 has-text-info">{{ .Date.Format "02.01.2006" }}</p>
-              <p class="title is-6 has-text-primary ">{{ .Title }}</p>
-              <p class="subtitle is-7 has-text-grey">{{ .Params.description }}</p>
+              <p class="title is-7 has-text-info has-little-margin">{{ .Date.Format "02.01.2006" }}</p>
+              <p class="title is-6 has-text-primary has-little-margin">{{ .Title }}</p>
+              <p class="subtitle is-7 has-text-grey has-little-margin">{{ .Params.description }}</p>
             </a>
             <hr>
           </div>
