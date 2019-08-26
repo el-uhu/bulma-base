@@ -12,7 +12,7 @@
   </div>
   <script src="https://player.vimeo.com/api/player.js"></script>
 {{ else if .Params.featured }}
-  <figure class="image">
+  <figure class="image is-4by3">
     <img src="{{ .Params.featured | relURL }}" alt="">
   </figure>
 {{ end }}

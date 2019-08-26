@@ -52,6 +52,49 @@ Implemented using [Bulma Timeline extension](https://wikiki.github.io/components
 ##### Modified figure shortcode
 Gets language relative path and returns framework consistent image element
 
+##### MathJax
+The theme supports rendering of Latex-style equations directly from within Markdown using MathJax.
+
+###### mhchem
+You can conventiently render chemical formulae and chemical equations using `mhchem`.
+
+```
+  $\ce{C6H12O6 + O2 -> 6H2O + 6CO2}$
+```
+
+renders to: $\ce{C6H12O6 + O2 -> 6H2O + 6CO2}$
+
+###### Mermaid.js
+Draw flowcharts, Gantt charts and sequence diagrams using `mermaid.js` via a
+
+```markdown
+{{<mermaid>}}
+graph LR
+      A-->B[baz]
+      B-->A{foo}
+      B---C(bar)
+      C==>D((eve))
+
+      class A,B,C,D myNodes;
+      classDef myNodes stroke-width:0px,font-family:monospace,font-weight:400, fill:#F8B195;
+{{</mermaid>}}
+```
+
+```mermaid
+graph LR
+      A-->B[baz]
+      B-->A{foo}
+      B---C(bar)
+      C==>D((eve))
+
+      class A,B,C,D myNodes;
+      classDef myNodes stroke-width:0px,font-family:monospace,font-weight:400, fill:#F8B195;
+```
+
+
+##### Kekule.js
+
+
 ##### Citation and Reference Shortcodes
 
 ## Customisation

@@ -93,3 +93,12 @@ img.no-fit
 
 .search-res, .cal-search-res
 	display: block
+
+// Offset anchor for in-page links
+h1::before, h2::before, h3::before
+  display: block
+  content: " "
+  margin-top: -$navbar-height
+  height: $navbar-height
+  visibility: hidden
+  pointer-events: none
