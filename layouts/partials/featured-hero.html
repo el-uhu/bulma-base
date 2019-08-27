@@ -1,5 +1,8 @@
 {{ if .Params.featuredVideo}}
 <section class="hero is-fullheight has-background feature-hero">
+  <div class="hero-head has-background-light override-navbar" style="z-index:100">
+      {{ partial "breadcrumb.html" . }}
+  </div>
   <div class="hero-body" style="z-index:100">
     {{ with .NextInSection }}
     <div class="next">
@@ -33,6 +36,9 @@
   <script src="https://player.vimeo.com/api/player.js"></script>
 {{ else if .Params.featured }}
 <section class="hero is-fullheight has-background feature-hero">
+  <div class="hero-head has-background-light override-navbar" style="z-index:100">
+      {{ partial "breadcrumb.html" . }}
+  </div>
   <div class="hero-body" style="z-index:100">
     {{ with .NextInSection }}
     <div class="next">
