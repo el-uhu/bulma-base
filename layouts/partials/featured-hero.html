@@ -4,6 +4,13 @@
       {{ partial "breadcrumb.html" . }}
   </div>
   <div class="hero-body" style="z-index:100">
+  </div>
+  <video  controls autoplay loop height=80%>
+    <source src="{{ .Params.featuredVideo |relURL }}" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+  <div class="hero-foot has-padding">
+    {{ partial "hero-header.html" . }}
     {{ with .NextInSection }}
     <div class="next">
       <a class="button is-primary is-inverted" href="{{ .Permalink }}">
@@ -18,13 +25,6 @@
       </a>
     </div>
     {{ end }}
-  </div>
-  <video  controls autoplay loop height=80%>
-    <source src="{{ .Params.featuredVideo |relURL }}" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
-  <div class="hero-foot has-padding">
-    {{ partial "hero-header.html" . }}
   </div>
 </section>
 
@@ -40,6 +40,10 @@
       {{ partial "breadcrumb.html" . }}
   </div>
   <div class="hero-body" style="z-index:100">
+  </div>
+  <img class="hero-background" style="object-fit:scale-down" src="{{ .Params.featured | relURL }}"  alt="">
+  <div class="hero-foot has-padding">
+    {{ partial "hero-header.html" . }}
     {{ with .NextInSection }}
     <div class="next">
       <a class="button is-primary is-inverted" href="{{ .Permalink }}">
@@ -54,10 +58,6 @@
       </a>
     </div>
     {{ end }}
-  </div>
-  <img class="hero-background" style="object-fit:scale-down" src="{{ .Params.featured | relURL }}"  alt="">
-  <div class="hero-foot has-padding">
-    {{ partial "hero-header.html" . }}
   </div>
 </section>
 

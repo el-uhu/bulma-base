@@ -1,0 +1,28 @@
+<div class="media">
+  <figure class="media-left">
+    <a href="{{ .Permalink }}">
+      <div class="image is-square is-128x128 ov-img">
+        <img src="{{ .Params.featured | relURL}}">
+      </div>
+    </a>
+  </figure>
+  <div class="media-content">
+    <a href="{{ .Permalink }}">
+      <h3 class="hero-quote ov has-text-grey has-text-right">
+        {{ with .Params.date }}
+          {{ dateFormat "02.01.2006" . }}
+        {{ end }}
+      </h3>
+      <h3 class="hero-quote ov has-text-link">
+        {{ with .Params.tags }}#{{ delimit . " #"}}{{ end }}
+      </h3>
+      <h1 class="hero-quote ov">{{ .Title }}</h1>
+      <h2 class="hero-quote ov">{{ .Params.description | markdownify }}</h2>
+      <h3 class="hero-quote ov">
+        {{ with .Params.authors }}
+          {{ delimit . " | "}}
+        {{ end }}
+      </h3>
+    </a>
+  </div>
+</div>

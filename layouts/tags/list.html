@@ -14,18 +14,39 @@
   {{ partial "header.html" . }}
 {{ end }}
 
-{{ define "main" }}
-<div class="column has-navbar-fixed-top">
+{{ define "non-section-main" }}
+<div class="column has-navbar-fixed-top has-no-padding">
     <section class="hero is-medium is-primary">
       <div class="hero-body">
         {{ $thistaxonomy := .Param "tags"}}
         {{ $title := .Title}}
         {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
-        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
-          <span class="hero-quote">#{{ $key }} </span>
-        </a>
+          {{ if in $thistaxonomy $key }}
+            <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+              <span class="hero-quote has-text-success">#{{ $key }} </span>
+            </a>
+          {{ else if eq $key $title}}
+            <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+              <span class="hero-quote has-text-success">#{{ $key }} </span>
+            </a>
+          {{ else }}
+            <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+              <span class="hero-quote">#{{ $key }} </span>
+            </a>
+          {{ end }}
         {{ end }}
       </div>
+    </section>
+    <section class="hero is-medium is-info">
+      {{ range .Pages }}
+        {{ if ne .Type "tags"}}
+          {{ partial "content-ov.html" . }}
+        {{ else }}
+          {{ range .Pages }}
+            {{ partial "content-ov.html" . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
     </section>
 </div>
 {{ end }}
