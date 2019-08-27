@@ -3,38 +3,30 @@
 {{ define "header_classes" }}{{ end }}
 
 {{ define "header" }}
+  <section class="hero is-small is-light override-navbar">
+    <div class="hero-body">
+      {{ partial "breadcrumb.html" . }}
+    </div>
+  </section>
+  {{ range first 1 .Pages}}
+    <!-- {{ partial "featured-hero.html" . }} -->
+  {{ end }}
   {{ partial "header.html" . }}
 {{ end }}
 
-{{ define "aside" }}
-<div class="column is-hidden-mobile is-2">
-  {{ partial "aside.html" . }}
-</div>
-{{ end }}
-
 {{ define "main" }}
-<div class="column is-half has-navbar-fixed-top">
-  {{ partial "breadcrumb.html" . }}
-  <h1 class="title is-1"style="text-transform:uppercase; letter-spacing:0.1rem;">#{{ .Title | title }}</h1>
-  <div class="content">
-    {{ .Content }}
-  </div>
-
-  <section class="section is-hidden-desktop">
-    {{ partial "calendar.html" . }}
-  </section>
-
-  <section class="section">
-    <div class="columns is-multiline">
-      {{ range.Pages }}
-        <div class="column is-full">
-          <div class="card">
-            {{ partial "card.html" . }}
-          </div>
-        </div>
-      {{ end }}
-    </div>
-  </section>
+<div class="column has-navbar-fixed-top">
+    <section class="hero is-medium is-primary">
+      <div class="hero-body">
+        {{ $thistaxonomy := .Param "tags"}}
+        {{ $title := .Title}}
+        {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+          <span class="hero-quote">#{{ $key }} </span>
+        </a>
+        {{ end }}
+      </div>
+    </section>
 </div>
 {{ end }}
 
