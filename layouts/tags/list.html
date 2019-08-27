@@ -8,16 +8,23 @@
       {{ partial "breadcrumb.html" . }}
     </div>
   </section>
-  {{ range first 1 .Pages}}
-    <!-- {{ partial "featured-hero.html" . }} -->
-  {{ end }}
   {{ partial "header.html" . }}
 {{ end }}
 
 {{ define "non-section-main" }}
 <div class="column has-navbar-fixed-top has-no-padding">
-    <section class="hero is-medium is-primary">
+    <section class="hero is-medium is-primary has-text-centered">
       <div class="hero-body">
+        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}">
+          <span class="hero-quote">//Home</span>
+        </a>
+        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/blog/">
+          <span class="hero-quote">//Blog </span>
+        </a>
+        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/projects/">
+          <span class="hero-quote">//Projects </span>
+        </a>
+        <br>
         {{ $thistaxonomy := .Param "tags"}}
         {{ $title := .Title}}
         {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
