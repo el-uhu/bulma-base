@@ -47,10 +47,14 @@
     <section class="hero is-medium is-info">
       {{ range .Pages }}
         {{ if ne .Type "tags"}}
-          {{ partial "content-ov.html" . }}
+          {{ $p := (dict "title" .Title "text" .Params.description "link" .Permalink "image" .Params.featured "imgclass" "is-square is-128x128 ov-img" "date" .Params.date "tags" .Params.tags "authors" .Params.authors )}}
+
+          {{ partial "content-ov.html" $p }}
         {{ else }}
           {{ range .Pages }}
-            {{ partial "content-ov.html" . }}
+            {{ $p := (dict "title" .Title "text" .Params.description "link" .Permalink "image" .Params.featured "imgclass" "is-square is-128x128 ov-img" "date" .Params.date "tags" .Params.tags "authors" .Params.authors )}}
+
+            {{ partial "content-ov.html" $p }}
           {{ end }}
         {{ end }}
       {{ end }}

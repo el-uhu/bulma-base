@@ -1,8 +1,53 @@
+<!-- PARAMETERS
+    --------------------
+      * denotes required parameters
+
+      ".title"*    - Title to be shown
+      ".text"*     - Description
+      ".link"*     - Permalink to linked Site
+      ".image"*    - Image to be shown
+
+      ".imgclass"  - e.g. "is-square is-128x128 ov-img"
+      ".date"      - Date parameter
+      ".tags"      - a list of tags
+      ".authors"   - a list of authors
+
+      example useage:
+        (dict "title" .Title "text" .Params.description "link" :Permalink "image" .Params.featured "imgclass" "is-square is-128x128 ov-img" "date" .Params.date "tags" .Params.tags "authors" .Params.authors )
+-->
 <section class="content-ov">
     <section class="section has-no-padding">
       <div class="columns is-centered">
         <div class="column is-6">
-          {{ partial "content-ov-media.html" . }}
+
+          <div class="media">
+            <figure class="media-left">
+              <a href="{{ .link }}">
+                <div class="image {{ .imgclass}}">
+                  <img src="{{ .image | relURL}}">
+                </div>
+              </a>
+            </figure>
+            <div class="media-content">
+              <a href="{{ .link }}">
+                <h3 class="hero-quote ov has-text-grey has-text-right">
+                  {{ with .date }}
+                    {{ dateFormat "02.01.2006" . }}
+                  {{ end }}
+                </h3>
+                <h3 class="hero-quote ov has-text-link">
+                  {{ with .tags }}#{{ delimit . " #"}}{{ end }}
+                </h3>
+                <h1 class="hero-quote ov">{{ .title }}</h1>
+                <h2 class="hero-quote ov">{{ .text | markdownify }}</h2>
+                <h3 class="hero-quote ov">
+                  {{ with .authors }}
+                    {{ delimit . " | "}}
+                  {{ end }}
+                </h3>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
