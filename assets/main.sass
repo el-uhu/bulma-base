@@ -53,8 +53,14 @@ h1::before, h2::before, h3::before
 .has-margin-bottom
 	margin-bottom: 0.75em !important
 
+.has-margin-top
+	margin-top: 0.75rem !important
+
 .has-big-margin-bottom
 	margin-bottom: 3rem !important
+
+.has-big-margin-top
+	margin-top: 3rem !important
 
 .has-no-padding
 	padding: 0px !important
@@ -84,6 +90,10 @@ h1::before, h2::before, h3::before
 
 .opacity-80
 	opacity: 0.8
+
+.is-mobile-column
+	@media (max-width: 768px)
+		flex-direction: column
 
 // Images
 .image.is-80percent
@@ -130,17 +140,10 @@ ul.toc > li > ul > li
 	flex-grow: 1
 
 // Buttons----------------------------------------------------------------------
-.prev, .next
-	position: absolute
-	top: 63%
-	z-index: 100
+.next-prev
+	display: flex
+	justify-content: space-between
 
-.prev
-	left: auto
-	right: 20px
-
-.next
-	left: 20px
 
 
 // Hero------------------------------------------------------------------------
