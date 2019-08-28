@@ -1,6 +1,6 @@
 {{ if .Params.featuredVideo}}
 <section class="hero is-fullheight has-background feature-hero">
-  <div class="hero-head has-background-light override-navbar" style="z-index:100">
+  <div class="hero-head has-background-light override-navbar opacity-80" style="z-index:100">
       {{ partial "breadcrumb.html" . }}
   </div>
   <div class="hero-body" style="z-index:100">
@@ -9,7 +9,7 @@
     <source src="{{ .Params.featuredVideo |relURL }}" type="video/mp4">
       Your browser does not support the video tag.
   </video>
-  <div class="hero-foot has-padding">
+  <div class="hero-foot has-padding opacity-80">
     {{ partial "hero-header.html" . }}
     {{ with .NextInSection }}
     <div class="next">
@@ -36,13 +36,13 @@
   <script src="https://player.vimeo.com/api/player.js"></script>
 {{ else if .Params.featured }}
 <section class="hero is-fullheight has-background feature-hero">
-  <div class="hero-head has-background-light override-navbar" style="z-index:100">
+  <div class="hero-head has-background-light override-navbar opacity-80" style="z-index:100">
       {{ partial "breadcrumb.html" . }}
   </div>
   <div class="hero-body" style="z-index:100">
   </div>
-  <img class="hero-background" style="object-fit:scale-down" src="{{ .Params.featured | relURL }}"  alt="">
-  <div class="hero-foot has-padding">
+  <img class="hero-background" style="object-fit:cover" src="{{ .Params.featured | relURL }}"  alt="">
+  <div class="hero-foot has-padding opacity-80">
     {{ partial "hero-header.html" . }}
     {{ with .NextInSection }}
     <div class="next">

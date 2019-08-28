@@ -1,11 +1,13 @@
-<footer class="footer has-background-grey-lighter has-text-centered footer-tags">
-  {{partial "tags.html" .}}
-</footer>
+<section class="section has-no-padding">
 
-<footer class="footer">
-  <div class="content">
-    <div class="level columns">
-      {{ range .Site.RegularPages }}
+  <footer class="footer has-background-grey-lighter has-text-centered footer-tags">
+    {{partial "tags.html" .}}
+  </footer>
+
+  <footer class="footer">
+    <div class="content">
+      <div class="level columns">
+        {{ range .Site.RegularPages }}
         {{ if eq .Params.type "footer"}}
         <div class="level-item column is-half center">
           <div class="media">
@@ -23,12 +25,13 @@
           </div>
         </div>
         {{ end }}
-      {{ end }}
-      <div class="level-item column is-half">
+        {{ end }}
+        <div class="level-item column is-half">
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</section>
 
 {{ $scripts := resources.Get "main.js" }}
 <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
