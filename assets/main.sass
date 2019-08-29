@@ -91,8 +91,6 @@ h1::before, h2::before, h3::before
 	justify-content: center
 	align-items: center
 
-.opacity-80
-	opacity: 0.8
 
 .is-mobile-column
 	@media (max-width: 768px)
@@ -153,6 +151,13 @@ ul.toc > li > ul > li
 	display: flex
 	justify-content: space-between
 
+// Figure----------------------------------------------------------------------
+
+.content
+	figure.image
+		margin-left: -1.5em
+		margin-right: -1.5em
+
 
 
 // Hero------------------------------------------------------------------------
@@ -166,17 +171,20 @@ ul.toc > li > ul > li
 	text-transform: uppercase
 	z-index: 2
 
+.navbar
+	height: 3.25rem
+
 .top-hero
 	margin-top: 3.25rem
 
 .hero.is-large
-	height: 75vh
+	min-height: 75vh
 
 .hero.is-medium
-	height: 50vh
+	min-height: 50vh
 
 .hero.is-small
-	height: 25vh
+	min-height: 25vh
 
 .hero.is-fullheight.top-hero
 		min-height: calc(100vh - 3.25rem)
@@ -212,8 +220,7 @@ ul.toc > li > ul > li
 
 .hero-foot
 	z-index: 42
-	background: rgba($light, 1)
-
+	background: rgba($light, 0.9)
 
 //------------------------------------------------------------------------------
 // Custon Elements
