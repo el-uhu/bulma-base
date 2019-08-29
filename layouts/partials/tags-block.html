@@ -1,0 +1,42 @@
+{{ $pages := .pages }}
+{{ with .context }}
+  {{ $thistaxonomy := .Param "tags"}}
+  {{ $title := .Title}}
+
+  <section class="hero is-small is-primary">
+    <div class="hero-body has-text-centered center">
+      {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+        <div class="">
+          {{ if in $thistaxonomy $key }}
+          <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+            <span class="hero-quote has-text-success">#{{ $key }} </span>
+          </a>
+          {{ else if eq $key $title}}
+          <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+            <span class="hero-quote has-text-success">#{{ $key }} </span>
+          </a>
+          {{ else }}
+          <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+            <span class="hero-quote">#{{ $key }} </span>
+          </a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  <section class="hero is-medium">
+    {{ range $pages }}
+      {{ if ne .Type "tags"}}
+        {{ $p := (dict "title" .Title "text" .Params.description "link" .Permalink "image" .Params.featured "imgclass" "is-square is-128x128 ov-img" "date" .Params.date "tags" .Params.tags "authors" .Params.authors )}}
+
+        {{ partial "content-ov.html" $p }}
+      {{ else }}
+        {{ range $pages }}
+          {{ $p := (dict "title" .Title "text" .Params.description "link" .Permalink "image" .Params.featured "imgclass" "is-square is-128x128 ov-img" "date" .Params.date "tags" .Params.tags "authors" .Params.authors )}}
+
+          {{ partial "content-ov.html" $p }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </section>
+{{ end }}

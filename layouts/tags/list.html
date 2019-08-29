@@ -3,62 +3,14 @@
 {{ define "header_classes" }}{{ end }}
 
 {{ define "header" }}
-  <section class="hero is-small is-light override-navbar">
-    <div class="hero-body">
-      {{ partial "breadcrumb.html" . }}
-    </div>
-  </section>
   {{ partial "header.html" . }}
 {{ end }}
 
 {{ define "non-section-main" }}
-<div class="column has-navbar-fixed-top has-no-padding">
-    <section class="hero is-medium is-primary has-text-centered">
-      <div class="hero-body">
-        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}">
-          <span class="hero-quote">//Home</span>
-        </a>
-        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/blog/">
-          <span class="hero-quote">//Blog </span>
-        </a>
-        <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/projects/">
-          <span class="hero-quote">//Projects </span>
-        </a>
-        <br>
-        {{ $thistaxonomy := .Param "tags"}}
-        {{ $title := .Title}}
-        {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
-          {{ if in $thistaxonomy $key }}
-            <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
-              <span class="hero-quote has-text-success">#{{ $key }} </span>
-            </a>
-          {{ else if eq $key $title}}
-            <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
-              <span class="hero-quote has-text-success">#{{ $key }} </span>
-            </a>
-          {{ else }}
-            <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
-              <span class="hero-quote">#{{ $key }} </span>
-            </a>
-          {{ end }}
-        {{ end }}
-      </div>
-    </section>
-    <section class="hero is-medium is-info">
-      {{ range .Pages }}
-        {{ if ne .Type "tags"}}
-          {{ $p := (dict "title" .Title "text" .Params.description "link" .Permalink "image" .Params.featured "imgclass" "is-square is-128x128 ov-img" "date" .Params.date "tags" .Params.tags "authors" .Params.authors )}}
-
-          {{ partial "content-ov.html" $p }}
-        {{ else }}
-          {{ range .Pages }}
-            {{ $p := (dict "title" .Title "text" .Params.description "link" .Permalink "image" .Params.featured "imgclass" "is-square is-128x128 ov-img" "date" .Params.date "tags" .Params.tags "authors" .Params.authors )}}
-
-            {{ partial "content-ov.html" $p }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    </section>
+<div class="column has-navbar-fixed-top has-no-padding top-hero">
+  <!-- Tags Block -->
+  {{ $p := (dict "context" . "pages" .Pages )}}
+  {{ partial "tags-block.html" $p }}
 </div>
 {{ end }}
 
