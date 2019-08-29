@@ -19,7 +19,7 @@
 
 
 
-  {{ $scripts := resources.Get "jquery.slim.min.js" }}
+  {{ $scripts := resources.Get "jquery.min.js" }}
   <script type="text/javascript" src="{{ $scripts.Permalink }}"></script>
   {{ $scripts := resources.Get "bulma-calendar.min.js" }}
   <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>

@@ -17,6 +17,7 @@ $navbar-breakpoint: 6000px
 html
 	scroll-behaviour: smooth
 
+
 .body
 	position: fixed
 	scroll-snap-type: y mandatory
@@ -29,6 +30,9 @@ h1::before, h2::before, h3::before
   height: $navbar-height
   visibility: hidden
   pointer-events: none
+
+#logo
+	display: none
 
 
 
@@ -75,11 +79,6 @@ h1::before, h2::before, h3::before
 .meta
 	padding-top: 0.1rem
 	padding-bottom: 0.1rem
-
-// Z-Axis
-.override-navbar
-	z-index: 50
-	position: relative
 
 // Flex
 .stretch

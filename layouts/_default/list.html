@@ -3,14 +3,6 @@
 {{ define "header_classes" }}{{ end }}
 
 {{ define "header" }}
-  <section class="hero is-small is-light override-navbar">
-    <div class="hero-body">
-      {{ partial "breadcrumb.html" . }}
-    </div>
-  </section>
-  {{ range first 1 .Pages}}
-    <!-- {{ partial "featured-hero.html" . }} -->
-  {{ end }}
   {{ partial "header.html" . }}
 {{ end }}
 

@@ -38,3 +38,18 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " is-active";
 }
+
+// Navbar show/hide items
+$(document).scroll(function() {
+  var y = $(this).scrollTop();
+  if (y > 800) {
+    $('#logo').fadeIn("fast");
+  } else {
+    $('#logo').fadeOut("fast");
+  }
+  if (y > 700) {
+    $('#breadcrumb').fadeOut("fast");
+  } else {
+    $('#breadcrumb').fadeIn("fast");
+  }
+});
