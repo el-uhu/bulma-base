@@ -1,19 +1,13 @@
-  <div class="media">
-    <div class="media-left">
-      <p class="image {{ .picsize }}">
-        <img class="is-rounded" src="{{ .data.featured | relURL }}">
-      </p>
-    </div>
-    <div class="media-content content">
-      {{ $lang := (i18n "lang")}}
-      <span class="has-text-weight-bold {{ .namesize }} has-text-dark"> {{ .data.name }}</span><br>
-      {{ if ne .subsize "none"}}
-        <span class="is-hidden-mobile has-text-grey {{ .subsize}}"> {{ index .data.role $lang }} | {{ index .data.trained $lang }}</span><br>
-      {{ end }}
-      {{ if eq .content "true" }}
-        <div class="content">
-          <p>{{ (index .data.bio $lang) | markdownify }}</p>
+  <div class="column is-half">
+    <div class="is-flex has-text-centered" style="justify-content:center">
+      <a href="">
+        <div class="is-flex" style="justify-content:center">
+          <figure class="image {{ .picsize }} ov-img is-hidden-mobile">
+            <img class="is-rounded" src="{{ .data.featured | relURL }}">
+          </figure>
         </div>
-      {{ end }}
+        <h2 class="hero-quote ov"> {{ .data.name }}</h2>
+        <h3 class="hero-quote ov"></h3>
+      </a>
     </div>
   </div>

@@ -1,23 +1,20 @@
 
 <section class="hero is-fullheight has-background feature-hero">
-  <div class="hero-head has-background-light override-navbar opacity-80" style="z-index:100">
-      {{ partial "breadcrumb.html" . }}
-  </div>
-  <div class="hero-body" style="z-index:100">
-  </div>
   <img class="hero-background" style="object-fit:cover" src="{{ .Params.featured | relURL }}"  alt="">
+  <div class="hero-body">
+  </div>
   <div class="hero-foot has-padding opacity-80">
     <div class="next-prev">
       <div class="next">
       {{ with .NextInSection }}
-        <a class="button is-primary is-inverted" href="{{ .Permalink }}">
+        <a class="button is-light" href="{{ .Permalink }}">
           <i class="fas fa-chevron-left fa-lg"></i>
         </a>
       {{ end }}
     </div>
     <div class="prev">
       {{ with .PrevInSection }}
-        <a class="button is-primary is-inverted" href="{{ .Permalink }}">
+        <a class="button is-light" href="{{ .Permalink }}">
           <i class="fas fa-chevron-right fa-lg"></i>
         </a>
       {{ end }}

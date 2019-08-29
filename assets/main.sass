@@ -97,6 +97,12 @@ h1::before, h2::before, h3::before
 .is-mobile-column
 	@media (max-width: 768px)
 		flex-direction: column
+		justify-content: center
+		align-items: center
+
+.is-mobile-wide
+	@media (max-width: 768px)
+		width: 90%
 
 // Images
 .image.is-80percent
@@ -159,6 +165,34 @@ ul.toc > li > ul > li
 	letter-spacing: 0.12em
 	text-transform: uppercase
 	z-index: 2
+
+.top-hero
+	margin-top: 3.25rem
+
+.hero.is-large
+	height: 75vh
+
+.hero.is-medium
+	height: 50vh
+
+.hero.is-small
+	height: 25vh
+
+.hero.is-fullheight.top-hero
+		min-height: calc(100vh - 3.25rem)
+
+.hero.is-large.top-hero
+		min-height: calc(75vh - 3.25rem)
+
+.hero.is-medium.top-hero
+		min-height: calc(50vh - 3.25rem)
+
+.hero.is-small.top-hero
+		min-height: calc(25vh - 3.25rem)
+
+.hero
+	overflow: hidden
+
 
 .hero
   &.has-background

@@ -25,7 +25,7 @@
       </h2>
     </div>
     <div class="column is-4">
-      <div class="columns is-multiline">
+      <div class="columns is-mobile">
         {{ range .Params.authors }}
         {{ $authordata := (index $.Site.Data.authors .)}}
         {{ $pdict := (dict "data" $authordata "picsize" "is-32x32" "content" "false" "namesize" "is-6" "subsize" "is-7")}}
