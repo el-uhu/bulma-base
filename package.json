@@ -19,5 +19,24 @@
     "git": "git add . && git commit -m",
     "postgit": "git push --all",
     "say-hello": "echo 'Hello World'"
-  }
+  },
+  "name": "bulma-base",
+  "description": "Basic responsive theme for Hugo static sites using [Bulma](https://bulma.io/) framework.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/el-uhu/bulma-base.git"
+  },
+  "keywords": [
+    "hugo-theme",
+    "bulma",
+    "teaching"
+  ],
+  "author": "el-uhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/el-uhu/bulma-base/issues"
+  },
+  "homepage": "https://github.com/el-uhu/bulma-base#readme"
 }
