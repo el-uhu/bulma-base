@@ -1,9 +1,9 @@
 # ToDo
 
 ## Fix
-- [ ] Calendar search items
-  - [ ] Display none initially
-  - [ ] Clean up formatting
+- [x] Calendar search items
+  - [x] Display none initially
+  - [x] Clean up formatting
 
 ## Open questions
 - [ ] What is a good way to streamline work on base template alongside custom functionality at a site specific level?
