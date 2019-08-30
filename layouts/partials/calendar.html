@@ -8,13 +8,14 @@
         <h1></h1>
       </div>
       <div class="calendar-search-results">
-        {{ range .Pages }}
+        {{ $calendarentries := where .Site.RegularPages "Type" "in" (slice "blog" "event")}}
+        {{ range $calendarentries }}
         <div class="search-item column is-full cls-{{ dateFormat "2006-01-02" .Date  }}">
           <div class="content">
             <a href="{{ .Permalink }}">
-              <p class="title is-7 has-text-info has-little-margin">{{ .Date.Format "02.01.2006" }}</p>
-              <p class="title is-6 has-text-primary has-little-margin">{{ .Title }}</p>
-              <p class="subtitle is-7 has-text-grey has-little-margin">{{ .Params.description }}</p>
+              <p class="title is-7 has-text-info ">{{ .Date.Format "02.01.2006" }}</p>
+              <p class="title is-6 has-text-primary ">{{ .Title }}</p>
+              <p class="subtitle is-7 has-text-grey ">{{ .Params.description }}</p>
             </a>
             <hr>
           </div>
@@ -30,7 +31,7 @@
 <script type="text/javascript">
 
   // requires id of objects to hav class cls-YYYY-MM-DD
-  var eventDates = [ {{ range .Pages }} { title: {{ .Title }}, description: {{ .Params.description }}, date : {{ dateFormat "2006-01-02" .Date  }}, type : {{ .Params.type }}, link : {{ .Permalink }} },{{ end }}];
+  var eventDates = [ {{ range $calendarentries }} { title: {{ .Title }}, description: {{ .Params.description }}, date : {{ dateFormat "2006-01-02" .Date  }}, type : {{ .Params.type }}, link : {{ .Permalink }} },{{ end }}];
 
   var colormap = {"event" : "has-background-warning", "blog" : "has-background-link"}
 
