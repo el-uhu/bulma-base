@@ -1,13 +1,14 @@
 # ToDo
 
 ## Fix
+- [ ] Fix tag-list partial: URL base missing
 - [x] Calendar search items
   - [x] Display none initially
   - [x] Clean up formatting
 
 ## Open questions
-- [ ] What is a good way to streamline work on base template alongside custom functionality at a site specific level?
-- [ ] Get a clearer idea about best practices when working with npm
+- [x] What is a good way to streamline work on base template alongside custom functionality at a site specific level?
+- [x] Get a clearer idea about best practices when working with npm
 
 ## Maintenance
 - [ ] Implement autoprefixing
