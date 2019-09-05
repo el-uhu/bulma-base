@@ -9,7 +9,7 @@
 {{ define "non-section-main" }}
 <div class="column has-navbar-fixed-top has-no-padding top-hero">
   <!-- Tags Block -->
-  {{ $p := (dict "context" . "pages" .Pages )}}
+  {{ $p := (dict "context" . "pages" .Pages "url" $.Site.BaseURL "lang" $.Site.LanguagePrefix )}}
   {{ partial "tags-block.html" $p }}
 </div>
 {{ end }}

@@ -1,7 +1,7 @@
 # ToDo
 
 ## Fix
-- [ ] Fix tag-list partial: URL base missing
+- [x] Fix tag-list partial: URL base missing
 - [x] Calendar search items
   - [x] Display none initially
   - [x] Clean up formatting

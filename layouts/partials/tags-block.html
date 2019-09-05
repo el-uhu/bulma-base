@@ -1,4 +1,6 @@
 {{ $pages := .pages }}
+{{ $url := .url }}
+{{ $lang := .lang }}
 {{ with .context }}
   {{ $thistaxonomy := .Param "tags"}}
   {{ $title := .Title}}
@@ -8,15 +10,15 @@
       {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
         <div class="">
           {{ if in $thistaxonomy $key }}
-          <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+          <a href="{{ $url }}/{{ $lang }}/tags/{{ $key}}/">
             <span class="hero-quote has-text-success">#{{ $key }} </span>
           </a>
           {{ else if eq $key $title}}
-          <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+          <a href="{{ $url }}/{{ $lang }}/tags/{{ $key}}/">
             <span class="hero-quote has-text-success">#{{ $key }} </span>
           </a>
           {{ else }}
-          <a href="{{ $.Site.BaseURL}}/{{ $.Site.LanguagePrefix }}/tags/{{ $key}}/">
+          <a href="{{ $url }}/{{ $lang }}/tags/{{ $key}}/">
             <span class="hero-quote">#{{ $key }} </span>
           </a>
           {{ end }}
