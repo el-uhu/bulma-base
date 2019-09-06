@@ -29,10 +29,10 @@
 
 <!-- save event data  in as javascript object -->
 <script type="text/javascript">
-
   // requires id of objects to hav class cls-YYYY-MM-DD
   var eventDates = [ {{ range $calendarentries }} { title: {{ .Title }}, description: {{ .Params.description }}, date : {{ dateFormat "2006-01-02" .Date  }}, type : {{ .Params.type }}, link : {{ .Permalink }} },{{ end }}];
 
+  // Calendar
   var colormap = {"event" : "has-background-warning", "blog" : "has-background-link"}
 
   function normaliseDatestring(datestring) {
@@ -48,24 +48,21 @@
     return eventDates.find(x => normaliseDatestring(x.date) === normaliseDatestring(datestring)).date
   };
 
-
   // Initialize all input of type date
   var calendars = bulmaCalendar.attach('[type="date"]');
 
   // Loop on each calendar initialized
   for(var i = 0; i < calendars.length; i++) {
-  	// Add listener to date:selected event
-  	calendars[i].on('select', date => {
+    // Add listener to date:selected event
+    calendars[i].on('select', date => {
       $(".calendar-search-results > .search-res").removeClass("search-res").addClass("search-item")
       var id = findID(date.data.value(), eventDates);
       var el = $(".cls-"+id)
       $(el).removeClass("search-item").addClass("search-res")
       console.log(el);
 
-  	});
+    });
   }
-
-
 
   // Compare eventDates with calendar elements and color elements if the correspond to an event
   function colorDates(eventDates, colormap) {
@@ -84,8 +81,6 @@
     }
   }
 
-
-
   colorDates(eventDates, colormap);
   // check for DOM changes
   MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
@@ -95,4 +90,5 @@
     attributes: true
     //...
   });
+
 </script>

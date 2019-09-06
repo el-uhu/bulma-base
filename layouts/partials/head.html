@@ -6,7 +6,7 @@
   {{ block "meta_tags" . }}{{end}}
   <link rel="icon" href="{{ "favicon.png" | absURL}}">
 
-  {{ $style := resources.Get "main.sass" | toCSS }}
+  {{ $style := resources.Get "bundle.min.css"}}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -17,12 +17,12 @@
   <!-- Mermaid for Graphs -->
   <script type="text/javascript" src="https://unpkg.com/mermaid@8.1.0/dist/mermaid.min.js"></script>
 
+  {{ $scripts := resources.Get "bundle.min.js" }}
+  <script type="text/javascript" src="{{ ($scripts).RelPermalink }}"></script>
+
+  <script type="text/javascript">
+
+  </script>
 
 
-  {{ $scripts := resources.Get "jquery.min.js" }}
-  <script type="text/javascript" src="{{ $scripts.Permalink }}"></script>
-  {{ $scripts := resources.Get "bulma-calendar.min.js" }}
-  <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
-  {{ $scripts := resources.Get "jquery.toc.min.js" }}
-  <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
 </head>
