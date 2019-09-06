@@ -5,25 +5,40 @@
     "bulma": "^0.7.5",
     "bulma-calendar": "^6.0.7",
     "bulma-timeline": "^3.0.4",
-    "d3": "^5.9.7",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "mermaid": "^8.2.6"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
     "browserify": "^16.5.0",
+    "clean-css-cli": "^4.3.0",
+    "minify": "^4.1.3",
     "mocha": "^6.2.0",
-    "postcss-cli": "^6.1.3"
+    "node-sass": "^4.12.0",
+    "postcss-cli": "^6.1.3",
+    "sass": "^1.23.0-module.beta.1"
   },
   "scripts": {
     "clean": "rm -r node_modules",
     "git": "git add . && git commit -m",
     "postgit": "git push --all",
+    "compile:js": "browserify src/main.js -o src/bundle.js",
+    "minify:js": "minify src/bundle.js > assets/bundle.min.js",
+    "build:js": "npm run compile:js && npm run minify:js",
+    "compile:css": "node-sass --output-style=expanded --source-map=true src/main.sass src/bundle.css",
+    "prefix:css": "postcss src/bundle.css --use=autoprefixer --map=false --output=src/bundle.css",
+    "minify:css": "cleancss --level=1 --source-map --source-map-inline-sources --output assets/bundle.min.css src/bundle.css",
+    "build:css": "npm run compile:css && npm run prefix:css && npm run minify:css",
+    "build" : "npm run build:css && npm run build:js",
     "say-hello": "echo 'Hello World'"
   },
   "name": "bulma-base",
   "description": "Basic responsive theme for Hugo static sites using [Bulma](https://bulma.io/) framework.",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/",
+  "browserslist": [
+    "last 2 versions"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/el-uhu/bulma-base.git"
