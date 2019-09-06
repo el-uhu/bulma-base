@@ -34,7 +34,8 @@
     "build:css": "npm run compile:css && npm run prefix:css && npm run minify:css",
     "build": "npm run build:css && npm run build:js",
     "watch": "watch 'npm run build' ./src",
-    "start": "npm run clean && npm run watch",
+    "watch-custom" : "watch 'npm run build' ../../assets/",
+    "start": "npm run clean && npm run watch-custom",
     "say-hello": "echo 'Hello World'"
   },
   "name": "bulma-base",
