@@ -15,8 +15,6 @@
 {{ end }}
 
 {{ define "custom-js" }}
-{{ $scripts := resources.Get "baffle.min.js" }}
-<script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
 
 <script type="text/javascript">
   let t = baffle('.title');
