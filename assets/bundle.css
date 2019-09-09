@@ -75,7 +75,7 @@ h2.subtitle {
   color: #DDD3CE;
 }
 
-h2.ov {
+h2, h3, h4, h5 {
   color: #8B817A !important;
 }
 
