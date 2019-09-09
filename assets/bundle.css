@@ -33,6 +33,15 @@ a.menu-label:hover {
   color: #3E3834 !important;
 }
 
+a {
+  color: #DDD3CE !important;
+}
+
+a:hover {
+  background-color: #DDD3CE !important;
+  color: #3E3834 !important;
+}
+
 .datetimepicker, .datepicker-nav {
   background-color: #3E3834 !important;
 }
@@ -70,7 +79,7 @@ h2.ov {
   color: #8B817A !important;
 }
 
-p {
+p, ul, li {
   color: #fefefe !important;
 }
 
