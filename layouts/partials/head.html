@@ -4,7 +4,7 @@
   <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ block "meta_tags" . }}{{end}}
-  <link rel="icon" href="{{ "favicon.png" | absURL}}">
+  <link rel="icon" href="{{ "favicon.ico" | relURL}}">
 
   {{ $style := resources.Get "bundle.min.css"}}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
