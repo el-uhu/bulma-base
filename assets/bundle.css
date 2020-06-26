@@ -132,6 +132,24 @@ mark {
 
 /*#DDCEC2*/
 /*#8B817A*/
+.iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /*! bulma.io v0.7.5 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -14810,7 +14828,6 @@ img.no-fit {
 }
 
 .menu {
-  position: -webkit-sticky;
   position: sticky;
   top: 3rem;
 }
