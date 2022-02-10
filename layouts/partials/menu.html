@@ -12,6 +12,7 @@
   {{ end}}
   {{ end }}
   {{ range .Site.Sections }}
+  {{ if ne .Title "Organisers" }}
   <li>
     <a  class="anchor" href="{{ .Permalink }}">
       {{ with .Params.headericon }}
@@ -20,6 +21,7 @@
       {{ .Title }}
     </a>
   </li>
+  {{ end }}
   {{ end }}
 
   {{ if .IsTranslated }}
